@@ -1,0 +1,120 @@
+{
+    "spaces": [
+        {
+            "name": "studio",
+            "instruments": [
+                {
+                    "name": "violoncello",
+                    "techniques": ["detache", "legato", "staccato", "spiccato", "pizzicato", "andante", "allegro"]
+                },
+                {
+                    "name": "violin",
+                    "techniques": ["detache", "legato", "staccato", "andante", "vivace"]
+                },
+                {
+                    "name": "clarinet",
+                    "techniques": ["tenuto", "legato", "staccato", "moderato", "allegro"]
+                },
+                {
+                    "name": "snare",
+                    "techniques": ["single_hits_string", "single_hits", "whirl", "brooms", "music"]
+                },
+                {
+                    "name": "voice",
+                    "techniques": ["recitation", "singing_folklore", "singing_opera"]
+                },
+                {
+                    "name": "test",
+                    "techniques": ["omni", "wide_cardio", "super_cardio", "figure_8"]
+                }
+            ]
+        },
+        {
+            "name": "concert_hall",
+            "instruments": [
+                {
+                    "name": "violoncello",
+                    "techniques": ["detache", "legato", "staccato", "spiccato", "pizzicato", "andante", "allegro"]
+                },
+                {
+                    "name": "violin",
+                    "techniques": ["detache", "legato", "staccato", "andante", "vivace"]
+                },
+                {
+                    "name": "clarinet",
+                    "techniques": ["tenuto", "legato", "staccato", "moderato", "allegro"]
+                },
+                {
+                    "name": "snare",
+                    "techniques": ["single_hits_string", "single_hits", "whirl", "brooms", "music"]
+                },
+                {
+                    "name": "voice",
+                    "techniques": ["recitation", "singing_folklore", "singing_opera"]
+                },
+                {
+                    "name": "test",
+                    "techniques": ["omni", "wide_cardio", "super_cardio", "figure_8"]
+                }
+            ]
+        },
+        {
+            "name": "anechoic_chamber",
+            "instruments": [
+                {
+                    "name": "violoncello",
+                    "techniques": ["detache", "legato", "staccato", "spiccato", "pizzicato", "andante", "allegro"]
+                },
+                {
+                    "name": "violin",
+                    "techniques": ["detache", "legato", "staccato", "andante", "vivace"]
+                },
+                {
+                    "name": "clarinet",
+                    "techniques": ["tenuto", "legato", "staccato", "moderato", "allegro"]
+                },
+                {
+                    "name": "snare",
+                    "techniques": ["single_hits_string", "single_hits", "whirl", "brooms", "music"]
+                },
+                {
+                    "name": "voice",
+                    "techniques": ["recitation", "singing_folklore", "singing_opera"]
+                },
+                {
+                    "name": "test",
+                    "techniques": ["omni", "wide_cardio", "super_cardio", "figure_8"]
+                }
+            ]
+        },
+        {
+            "name": "church",
+            "instruments": [
+                {
+                    "name": "violoncello",
+                    "techniques": ["detache", "legato", "staccato", "spiccato", "pizzicato", "andante", "allegro"]
+                },
+                {
+                    "name": "violin",
+                    "techniques": ["detache", "legato", "staccato", "andante", "vivace"]
+                },
+                {
+                    "name": "clarinet",
+                    "techniques": ["tenuto", "legato", "staccato", "moderato", "allegro"]
+                },
+                {
+                    "name": "snare",
+                    "techniques": ["single_hits_string", "single_hits", "whirl", "brooms", "music"]
+                },
+                {
+                    "name": "voice",
+                    "techniques": ["recitation", "singing_folklore", "singing_opera"]
+                },
+                {
+                    "name": "test",
+                    "techniques": ["omni", "wide_cardio", "super_cardio", "figure_8"]
+                }
+            ]
+        }
+    ]
+}

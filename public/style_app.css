@@ -1,0 +1,1161 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Raleway';
+    background: linear-gradient(120deg, #c2c7cd, #00d4ff);
+    color: #333;
+    line-height: 1.6;
+    overflow-x: hidden; /* Zabrání horizontálnímu posouvání */
+    text-align: center; /* Centrovat obsah */
+}
+
+.title {
+    display: flex; /* Použití flexboxu pro zarovnání vedle sebe */
+    align-items: center; /* Zarovná prvky vertikálně na střed */
+    justify-content: space-between; /* Zarovná obsah doleva */
+    margin-top: 100px;
+    padding-left: 100px;
+    padding-right: 100px;
+    background-color: transparent; /* Průhledné pozadí */
+    text-align: left; /* Zarovnání textu do bloku */
+    font-size: 30px; /* Velikost textu */
+    gap: 50px;
+}
+
+.text-block {
+    padding-left: 100px;
+    padding-right: 100px;
+    background-color: transparent; /* Optional background color */
+    text-align: justify; /* Zarovná text do bloku */
+    /* border-left: 5px solid #007bff; Adds a nice left border */
+}
+
+.text-block img {
+    max-width: 100%; /* Zabrání tomu, aby obrázek přesáhl šířku kontejneru */
+    height: auto; /* Zachová proporce obrázku */
+    margin-top: 20px; /* Přidá mezeru nad obrázkem */
+    margin-bottom: 20px; /* Přidá mezeru pod obrázkem */
+    border-radius: 8px; /* Volitelně přidá zaoblené rohy */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Volitelný stín pro efekt */
+}
+
+/* Nadpis 1 */
+.text-block h1 {
+    margin-left: 0; /* Indents the block from the left */
+    margin-top: 50px;
+    font-size: 60px;       /* Adjust font size */
+    color: #333;           /* Change text color */
+    line-height: 1.6;      /* Adjust line spacing */
+    text-align: justify;   /* Align the text */
+    /* font-family: Arial, sans-serif; /* Change font family */
+}
+
+/* Nadpis 2 */
+.text-block h2 {
+    margin-left: 0; /* Indents the block from the left */
+    font-size: 40px;       /* Adjust font size */
+    color: #333;           /* Change text color */
+    line-height: 1.6;      /* Adjust line spacing */
+    text-align: justify;   /* Align the text */
+    /* font-family: Arial, sans-serif; /* Change font family */
+}
+
+/* Nadpis 3 */
+.text-block h3 {
+    margin-left: 0; /* Indents the block from the left */
+    font-size: 30px;       /* Adjust font size */
+    color: #333;           /* Change text color */
+    line-height: 1.6;      /* Adjust line spacing */
+    text-align: justify;   /* Align the text */
+    /* font-family: Arial, sans-serif; /* Change font family */
+}
+
+/* Nadpis 4 */
+.text-block h4 {
+    margin-left: 0; /* Indents the block from the left */
+    font-size: 25px;       /* Adjust font size */
+    color: #3bb2b8;           /* Change text color */
+    line-height: 1.6;      /* Adjust line spacing */
+    text-align: justify;   /* Align the text */
+    /* font-family: Arial, sans-serif; /* Change font family */
+}
+
+.text {
+    font-size: 20px;       /* Adjust font size */
+    color: #333;           /* Change text color */
+    line-height: 1.6;      /* Adjust line spacing */
+    text-align: justify;   /* Align the text */
+    /* font-family: Arial, sans-serif; /* Change font family */
+}
+
+ul {
+    margin-left: 40px;
+}
+
+
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 80px;
+    background-color: transparent; /* Transparentní pozadí na začátku */
+    position: fixed; /* Umožňuje ho umístit nad hero sekci */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px); /* Apply blur effect */
+    transition: background-color 0.5s ease, box-shadow 0.5s ease;
+    padding: 0 20px;
+}
+
+/* Header při scrollu */
+header.scrolled {
+    background-color: rgba(255, 255, 255, 0.85); /* Bílé pozadí při scrollu */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Přidání jemného stínu */
+    backdrop-filter: blur(10px); /* Apply blur effect */
+}
+
+
+/* Logo a text v záhlaví */
+.logo-left {
+    display: flex;
+    align-items: center;
+    margin: 0;       /* Pokud by bylo nastaveno margin-top, nastavte ho na 0 */
+    padding: 0;
+}
+
+.logo-image {
+    width: 50px;
+    margin-right: 15px;
+    transition: transform 0.3s ease;
+}
+
+.logo-text {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Navigace uprostřed */
+.nav-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center; /* Vertikální zarovnání */
+    flex: 1;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center; /* Zarovná odkazy a tlačítka do jedné linie */
+    gap: 20px; /* Mezera mezi odkazy */
+}
+
+/* Style for the navigation menu links */
+.nav-links a {
+    text-decoration: none;
+    color: #333; /* Default text color */
+    font-weight: 500; /* Boldness similar to the reference */
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    position: relative;
+    transition: color 0.3s ease; /* Smooth transition for color */
+}
+
+/* Hover effect for link */
+.nav-links a:hover {
+    color: #007bff; /* Text color changes to blue on hover */
+}
+
+/* Adding the underline effect */
+.nav-links a::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: #007bff; /* Blue underline color */
+    bottom: 0;
+    left: 50%; /* Start the underline from the center */
+    transition: width 0.4s ease, left 0.4s ease; /* Smooth animation */
+}
+
+/* Hover state to expand underline */
+.nav-links a:hover::before {
+    width: 100%; /* Expand underline on hover */
+    left: 0; /* Move the underline from the center to full width */
+}
+
+/* Active link styling (if needed) */
+.nav-links a.active {
+    color: #007bff; /* Same blue color for the active link */
+}
+
+.nav-links a.active::before {
+    width: 100%;
+    left: 0;
+}
+
+.language-buttons {
+    display: flex;
+    gap: 10px; /* Mezera mezi tlačítky */
+}
+
+#btn-cs, #btn-en, #btn-de {
+    all: unset; /* Resetuje výchozí styly tlačítek */
+    cursor: pointer;
+    font-size: 1.5rem; /* Zvýší velikost vlajek */
+    display: inline-block;
+    margin: 0 10px; /* Přidá větší mezery mezi tlačítky */
+}
+
+/* Kontejner hamburger menu – nastavíme jej jako čtverec a vyrovnáme čárky rovnoměrně */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 30px;                 /* Nastavte šířku na 30px */
+    height: 20px;                /* Nastavte výšku na 30px (dříve bylo 24px) */
+    margin: 0;                   /* Odstraňte případné marginy */
+    padding: 0;                  /* Odstraňte případné paddingy */
+    cursor: pointer;
+}
+
+/* Každá čárka hamburgeru */
+.hamburger span {
+    display: block;
+    width: 100%;                /* Čáry budou mít stejnou šířku jako kontejner (30px) */
+    height: 3px;                /* Pevná výška každé čárky (všechny budou 4px vysoké) */
+    background-color: #333;     /* Barva čárek */
+    transition: all 0.3s ease;
+}
+
+
+/* Footer */
+footer {
+    background-color: #f5f5f5;
+    text-align: center;
+    padding: 30px;
+    border-top: 1px solid #eaeaea;
+    margin-top: 200px;
+}
+
+footer p {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+
+/* Styl pro skoro všechna tlačítka */
+.cta-btn {
+    justify-self: center;
+    color: #333; /* Barva textu – upravte dle potřeby */
+    font-family: inherit;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border: none; /* Bez okraje */
+    border-radius: 20px;
+    cursor: pointer;
+    width: 200px;
+    text-align: center;
+    text-decoration: none; /* Odstraní podtržení odkazu */
+    transition: transform 0.5s ease
+}
+
+.cta-btn:hover {
+    color: white; /* Inverzní barva textu */
+    background-color: transparent; /* Pozadí zůstane průhledné */
+    transform: scale(1.05);
+    box-shadow: none; /* Zajistí, že se nezobrazí žádný stín */
+}
+
+
+
+
+
+
+
+
+
+/* Kontejner pro info tlačítko */
+.info-container {
+    text-align: center;
+    position: relative;
+    display: inline-block;
+}
+
+/* Styl tlačítka s obrázkem */
+.info-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+/* Nastavení velikosti obrázku */
+.info-icon {
+    width: 40px; /* Změň podle potřeby */
+    height: 40px; /* Změň podle potřeby */
+}
+
+/* Tooltip box - výchozí stav (skrytý) */
+.tooltip-text {
+    visibility: hidden;
+    position: absolute;
+    top: 50px; /* Umístění tooltipu pod tlačítkem */
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+    white-space: nowrap;
+    z-index: 1000;
+    opacity: 0;
+}
+
+/* Zobrazení tooltipu při hoveru */
+.info-container:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* MODAL OVERLAY */
+.modal-overlay {
+    display: none; /* Skryté při načtení stránky */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Poloprůhledné pozadí */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Zajistí, že modal bude vždy navrchu */
+}
+
+/* MODAL BOX */
+.modal-box {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    width: 70%;
+    max-width: 1000px;
+    max-height: 70vh; /* Maximální výška okna */
+    overflow-y: auto; /* Povolit scroll uvnitř okna */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* POSUVNÍK OBSAHU */
+.modal-content {
+    max-height: 50vh; /* Maximální výška obsahu */
+    overflow-y: auto; /* Povolit scrollování obsahu */
+    text-align: justify; /* Zarovnání textu do bloku */
+    padding: 20px; /* Odsazení od okrajů */
+    font-size: 14px; /* Menší písmo pro lepší čitelnost */
+    line-height: 1.5; /* Lepší rozestup mezi řádky */
+}
+
+/* Nadpisy v modalu */
+.modal-content h2, .modal-content h3 {
+    text-align: left; /* Nadpisy zarovnané doleva */
+    margin-top: 10px;
+}
+
+.modal-text {
+    text-align: justify;
+    margin-bottom: 10px; /* Zvýšíme mezery mezi odstavci */
+}
+
+.modal-text img {
+    height: 1.5rem; /* Přizpůsobí výšku fontu */
+    width: auto; /* Zachová proporce */
+    vertical-align: middle; /* Zarovná obrázek na střed řádku */
+    margin: 0 5px; /* Přidá malý odstup kolem obrázku */
+}
+
+
+/* Zavírací tlačítko */
+.close-button {
+    display: block;
+    margin: 15px auto 0;
+    padding: 10px 20px;
+    background: #d9534f;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    z-index: 1002; /* Zajistí, že tlačítko nebude překryté */
+}
+
+.close-button:hover {
+    background: #c9302c;
+}
+
+.spinner {
+    border: 16px solid #f3f3f3; /* světle šedá */
+    border-top: 16px solid #3498db; /* modrá */
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    animation: spin 2s linear infinite;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+}
+  
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+
+
+
+
+
+
+
+
+/* Slider na stránce aplikace – centrální zarovnání a prodloužení */
+
+.slider-container {
+    position: relative; /* Důležité pro absolutní umístění dítěte */
+    margin: 0px auto 50px auto; /* top: 100px, bottom: 20px, horizontálně auto */
+    padding: 0;
+    width: 80%; /* Můžeš dát fixní šířku nebo klidně 80vw */
+}
+
+.slider-container svg {
+    width: 100%; 
+    height: auto; /* Poměr stran zůstane z viewBoxu */
+    display: block;
+}
+
+#distanceSlider {
+    position: absolute;
+    height: 18px;
+    background: transparent;
+    border-radius: 10px;
+    outline: none;
+    appearance: none;
+    z-index: 1;
+    transform-origin: 0 50%;
+    width: 0;
+    transform: none;
+}
+
+input[type="range"] {
+    --slider-thumb-image: url('/Images/Directivity_patterns/omni.png'); 
+    position: absolute;
+    width: clamp(40px, 10vw, 100px);
+    height: clamp(40px, 10vw, 100px);
+    appearance: none;
+    background-color: #ddd;
+    border-radius: 10px;
+    outline: none;
+    transition: background-color 0.3s ease;
+    margin-top: 0;
+    
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    background: var(--slider-thumb-image) center no-repeat;
+    background-size: contain;
+    /* Minimální velikost 40px, ideálně 10vw, maximálně 100px */
+    width: clamp(40px, 10vw, 100px);
+    height: clamp(40px, 10vw, 100px);
+    border-radius: 50%;
+    border-radius: 50%; 
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: clamp(40px, 10vw, 100px);
+    height: clamp(40px, 10vw, 100px);
+    background: var(--slider-thumb-image) no-repeat center;
+    background-size: 500%;
+    border-radius: 50%;
+    cursor: pointer;
+
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.1); 
+    transition: transform 0.3s ease; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Pokud je settings-container pod těmito sekcemi, zajistíme i jeho centrování */
+.settings-container {
+    margin-top: 20px; /* nastaví se konzistentní vertikální odsazení a horizontální centrování */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Nastavíme .settings-row jako grid s dvěma sloupci a dvěma řádky */
+.settings-row {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: auto auto;
+    gap: 20px; /* mezera mezi položkami */
+    justify-content: center; /* centrování gridu */
+}
+
+/* Všechna políčka (dropdowny i tlačítko) budou mít stejnou šířku a výšku */
+.settings-row > * {
+    width: 100%;  /* nastavte dle potřeby – např. 200px */
+    min-height: 4rem; /* nebo jinou hodnotu, která umožní umístit label a select nad sebe */
+    display: flex;
+    flex-direction: column;  /* umožníme rozložení labelu nad selectem */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* Ujistíme se, že label uvnitř .setting-box je blokový a má odsazení dole */
+.setting-box label {
+    display: block !important;
+    margin-bottom: 0.5rem !important;
+    font-weight: bold;
+}
+  
+/* Nastavíme pevnou šířku kontejneru, ve kterém je dropdown */
+.setting-box {
+    width: 200px !important;  /* Nebo libovolná hodnota, která se vám líbí */
+}
+
+
+/* Pro select uvnitř .setting-box – zajistíme, že vyplní box a text bude vycentrován */
+.setting-box select {
+    width: 100%;
+    max-width: 250px;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    font-size: 1rem;
+    font-family: inherit;
+    color: #333;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg width='10' height='7' viewBox='0 0 10 7' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%23333' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 10px 7px;
+  }
+
+
+
+/* Tlačítko pod všemi boxy */
+#applySettings {
+    grid-column: 1 / span 2;
+    justify-self: center;
+    color: #333; /* Barva textu */
+    font-family: inherit;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    cursor: pointer;
+    width: 300px;
+    text-align: center;
+    background-color: transparent; /* Zajistí průhledné pozadí */
+    border: none; /* Odstraní ohraničení */
+    transition: transform 0.3s ease;
+}
+
+#applySettings:hover {
+    color: white; /* Inverzní barva textu */
+    background-color: transparent; /* Pozadí zůstane průhledné */
+    transform: scale(1.05);
+    box-shadow: none; /* Zajistí, že se nezobrazí žádný stín */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Hlavní kontejner spojující waveform a ovládací tlačítka */
+.audio-container {
+    position: fixed; /* Zajistí, že kontejner zůstane na místě */
+    bottom: 20px; /* Vzdálenost od spodního okraje viditelné obrazovky */
+    left: 50%; /* Vycentrování na střed */
+    transform: translateX(-50%); /* Korekce horizontálního posunu */
+    z-index: 900; /* Nad ostatními prvky */
+    background-color: transparent; /* Tmavé pozadí */
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    width: auto;
+    max-width: 1200px;
+    width: 100%;
+}
+
+
+/* Waveform sekce */
+#waveform-container {
+    margin: 20px auto; /* horní i dolní margin 20px, horizontálně auto */
+    width: 80%; /* Přizpůsobení šířce hlavního kontejneru */
+    background-color: #444; /* Mírně světlejší barva než controls */
+    border-radius: 30px; /* Zaoblení rohů */
+    padding: 15px; /* Vnitřní odsazení */
+    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3); /* Měkčí a méně výrazný stín */
+    display: flex; /* Flexbox layout */
+    flex-direction: column; /* Každý slot bude pod sebou */
+    gap: 10px; /* Mezera mezi jednotlivými sloty */
+    
+}
+
+/* Hlavní region přes všechny waveformy */
+::part(region) {
+    background-color: rgba(0, 123, 255, 0.3); /* Nastavení barvy regionu */
+    height: 100; /* Výška regionu přes všechny 4 waveformy */
+    position: absolute; /* Zajistí pevné umístění */
+    z-index: 10; /* Nad waveformami */
+    top: 0; /* Region začíná od vršku prvního waveformu */
+}
+
+/* Táhla regionu (levé a pravé) */
+::part(region-handle-left),
+::part(region-handle-right) {
+    width: 2px; /* Šířka táhel */
+    height: calc(100% * 4); /* Výška táhla přes celý region */
+    background-color: rgba(255, 165, 0, 0.7); /* Barva táhel */
+    cursor: ew-resize; /* Styl kurzoru pro úpravu */
+    position: absolute; /* Umístění na okrajích regionu */
+    z-index: 11; /* Nad regionem */
+}
+
+.waveform-highlight {
+    outline: 2px solid orange;      /* nebo border */
+    border-radius: 4px;
+}
+
+
+/* Kontejner pro dolní ovládací prvky */
+#bottom-container {
+    display: flex;
+    justify-content: space-between; /* Zarovnání na střed */
+    align-items: center; /* Vertikální zarovnání */
+    gap: 5px; /* Mezera mezi controls-container a pattern-selector */
+    margin-top: 5px; /* Mezera nad dolními prvky */
+    position: relative; /* Zajistí správné pozicování uvnitř rodiče */
+    width: 100%; /* Rozšíření na plnou šířku */
+    max-width: 100%; /* Zajištění maximální šířky */
+    box-sizing: border-box; /* Zahrnutí paddingu a borderu do šířky */
+}
+
+/* Levá spodní část */
+#bottom-left-container {
+    width: clamp(150px, 35vw, 400px);
+    display: flex;
+    justify-content: flex-end; /* Zarovnání obsahu na střed */
+    align-items: center;
+    background-color: transparent; /* Příklad barvy pozadí */
+    border-radius: 20px; /* Mírné zaoblení */
+    padding: clamp(10px, 2vw, 20px);
+}
+
+/* Controls sekce */
+#controls-container {
+    background-color: #222;
+    /* Minimální šířka 200px, ideálně 25vw a maximálně 400px */
+    height: 70px;
+    width: 18rem;
+    display: flex;
+    flex-wrap: nowrap;  /* Umožní obsahu zalamovat se do dalšího řádku */
+    justify-content: center; /* Nebo space-between, dle požadovaného rozložení */
+    align-items: center;
+    /* Padding se také mění: minimálně 10px, ideálně 2vw a maximálně 20px */
+    padding: 1rem ;
+    border-radius: 70px;
+    margin: 0 auto;
+}
+
+/* Controls styl tlačítek */
+#controls {
+    display: flex;
+    flex-wrap: nowrap;  /* Tlačítka se při nedostatku místa zalamují */
+    gap: 1rem;
+    justify-content: center;
+}
+#controls button {
+    background: none; /* Výchozí styl */
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Minimálně 30px, ideálně 5vw a maximálně 60px */
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Přechody */
+    flex-shrink: 1; /* Umožní tlačítkům se zmenšovat, ale zůstanou vedle sebe */
+}
+
+#controls button img {
+    width: 100%; /* Obrázek vyplní tlačítko */
+    height: 100%;
+    display: block;
+    pointer-events: none; /* Zabraňuje interakci s obrázkem */
+    filter: invert(1); /* Převrácení barev */
+}
+
+#controls button.active img {
+    filter: invert(0.3) sepia(1) saturate(5) hue-rotate(90deg); /* Zelená */
+}
+
+#controls button.paused img {
+    filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); /* Modrá */
+}
+
+#controls button.loop-active img {
+    filter: invert(0.3) sepia(1) saturate(5) hue-rotate(0deg); /* Červená */
+}
+
+#controls button:hover {
+    transform: scale(1.1); /* Zvýšení velikosti při hoveru */
+}
+
+
+/* Pravá část */
+#bottom-right-container {
+    width: clamp(150px, 35vw, 400px);
+    display: flex;
+    justify-content: flex-start; /* Obsah zarovnaný doleva */
+    align-items: center;
+    background-color: transparent; /* Barva pozadí */
+    border-radius: 20px; /* Mírné zaoblení */
+    padding: clamp(10px, 2vw, 20px);
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Plynulá animace */
+}
+
+#pattern-selector {
+    width: 70px; /* Zabírá 30 % šířky */
+    height: 70px;
+    display: flex;
+    justify-content: center; /* Obsah zarovnaný doleva */
+    align-items: center;
+    background-color: #222; /* Barva pozadí */
+    border-radius: 70px; /* Mírné zaoblení */
+    padding: 10px; /* Vnitřní odsazení */
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Plynulá animace */
+}
+
+/* Rozbalený stav */
+#pattern-selector.expanded {
+    width: 100%; /* Šířka rozbaleného obdélníku */
+    height: auto; /* Automatická výška */
+    border-radius: 70px; /* Mírné zaoblení */
+    padding: 10px; /* Vnitřní odsazení */
+    display: flex;
+    flex-direction: row; /* Obsah vedle sebe */
+    align-items: center;
+    gap: 0; /* Mezera mezi obrázky a šipkou */
+    overflow: visible; /* Zajistí zobrazení obsahu */
+    justify-content: space-between; /* Rovnoměrné rozložení ikon a šipky */
+    /* Bod animace stále na levý okraj */
+    transform-origin: left center ;
+}
+
+/* Obrázky uvnitř kontejneru */
+.pattern-options {
+    display: none; /* Skryté ve stavu kruhu */
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+    position: relative; /* Základní pozice pro absolutní šipku */
+}
+
+#pattern-selector.expanded .pattern-options {
+    display: flex; /* Zobrazení obrázků ve stavu obdélníku */
+    
+}
+
+/* Obrázky */
+.pattern-options img {
+    width: 50px; /* Velikost každého obrázku */
+    height: 50px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Přechody při hoveru */
+    clip-path: circle(50%); /* Oříznutí do kruhu */
+}
+
+/* Hover efekt */
+.pattern-options img:hover {
+    transform: scale(1.2); /* Jemné zvětšení */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Jemný stín při hoveru */
+}
+
+/* Aktivní obrázek */
+.pattern-options img.active {
+    border: 2px solid #007bff; /* Modrý rámeček kolem aktivního obrázku */
+    border-radius: 50%; /* Přizpůsobení oříznutí */
+    clip-path: circle(50%); /* Zajištění kruhového efektu */
+}
+
+/* Tlačítko šipečky - mikrofonu */
+.collapse-mic {
+    display: block; /* Viditelné tlačítko */
+    cursor: pointer;
+    background: none; /* Odstraní výchozí styl tlačítka */
+    border: none; /* Odstraní okraje tlačítka */
+    padding: 0; /* Odstraní vnitřní odsazení */
+    transition: transform 0.3s ease; /* Animace transformace */
+    width: 40px; /* Nastavení šířky obrázku */
+    height: 40px; /* Nastavení výšky obrázku */
+    filter: invert(1); /* Převrácení barev */
+}
+
+.collapse-mic img {
+    width: 100%; /* Obrázek se přizpůsobí velikosti tlačítka */
+    height: 100%;
+    display: block;
+    transition: width 0.3s ease, height 0.3s ease; /* Plynulá změna velikosti */
+    margin-right: auto; /* Posune šipku doprava */
+}
+
+/* Styl obrázku při rozbalení bubliny */
+#pattern-selector.expanded .collapse-mic img {
+    width: 50%; /* Zmenšená šířka */
+    height: 50%; /* Zmenšená výška */
+}
+
+/* Zobrazíme šipečku pouze v rozbaleném stavu */
+#pattern-selector.expanded .collapse-mic {
+    display: block; /* Zobrazení šipečky */
+}
+
+/* Efekt při hoveru */
+.collapse-mic:hover {
+    transform: scale(1.2); /* Zvýraznění při hoveru */
+}
+
+
+
+
+
+
+
+/* Waveform options – výběr počet waveform */
+#collapseButtonLeft {
+    background: none;
+    border: none;
+    font-size: 1.5rem; /* Velikost šipečky */
+    cursor: pointer;
+    color: #444; /* Barva šipečky */
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+
+#space-selector {
+    width: 70px; /* Zabírá 30 % šířky */
+    height: 70px;
+    display: flex;
+    justify-content: center; /* Obsah zarovnaný doleva */
+    align-items: center;
+    background-color: #222; /* Barva pozadí */
+    border-radius: 70px; /* Mírné zaoblení */
+    padding: 10px; /* Vnitřní odsazení */
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Plynulá animace */
+}
+
+/* Rozbalený stav */
+#space-selector.expanded {
+    width: 100%; /* Šířka rozbaleného obdélníku */
+    height: auto; /* Automatická výška */
+    border-radius: 70px; /* Mírné zaoblení */
+    padding: 10px; /* Vnitřní odsazení */
+    display: flex;
+    flex-direction: row; /* Obsah vedle sebe */
+    align-items: center;
+    gap: 0; /* Mezera mezi obrázky a šipkou */
+    overflow: visible; /* Zajistí zobrazení obsahu */
+    justify-content: space-between; /* Rovnoměrné rozložení ikon a šipky */
+    /* Bod animace stále na levý okraj */
+    transform-origin: center left;
+}
+
+/* Obrázky uvnitř kontejneru */
+.space-options {
+    display: none; /* Skryté ve stavu kruhu */
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+    position: relative; /* Základní pozice pro absolutní šipku */
+}
+
+#space-selector.expanded .space-options {
+    display: flex; /* Zobrazení obrázků ve stavu obdélníku */
+    
+}
+
+/* Obrázky */
+.space-options img {
+    width: 50px; /* Velikost každého obrázku */
+    height: 50px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Přechody při hoveru */
+    filter: invert(1); /* Převrácení barev */
+}
+
+/* Hover efekt */
+.space-options img:hover {
+    transform: scale(1.2); /* Jemné zvětšení */
+}
+
+/* Aktivní obrázek */
+.space-options img.active {
+    border: 2px solid #007bff; /* Modrý rámeček kolem aktivního obrázku */
+    border-radius: 10px;
+}
+
+
+
+/* Tlačítko šipečky - prostoru */
+.collapse-space {
+    display: block; /* Viditelné tlačítko */
+    cursor: pointer;
+    background: none; /* Odstraní výchozí styl tlačítka */
+    border: none; /* Odstraní okraje tlačítka */
+    padding: 0; /* Odstraní vnitřní odsazení */
+    transition: transform 0.3s ease; /* Animace transformace */
+    width: 40px; /* Nastavení šířky obrázku */
+    height: 40px; /* Nastavení výšky obrázku */
+    filter: invert(1); /* Převrácení barev */
+}
+
+/* Obrázek uvnitř tlačítka */
+.collapse-space img {
+    width: 100%; /* Obrázek se přizpůsobí velikosti tlačítka */
+    height: 100%;
+    display: block;
+    transition: width 0.3s ease, height 0.3s ease; /* Plynulá změna velikosti */
+    margin-left: auto; /* Posune šipku doprava */
+}
+
+/* Styl obrázku při rozbalení bubliny */
+#space-selector.expanded .collapse-space img {
+    width: 50%; /* Zmenšená šířka */
+    height: 50%; /* Zmenšená výška */
+}
+
+/* Zobrazíme šipečku pouze v rozbaleném stavu */
+#space-selector.expanded .collapse-space img {
+    width: 50%; 
+    height: 50%;
+}
+
+.collapse-space:hover {
+    transform: scale(1.1); /* Zvýraznění při hoveru */
+}
+
+
+
+
+
+
+
+
+#collapseButtonRight:hover {
+    transform: scale(1.2); /* Zvýraznění při hoveru */
+    color: #000; /* Tmavší barva */
+}
+
+#collapseButtonLeft:hover {
+    transform: scale(1.2); /* Zvýraznění při hoveru */
+    color: #000; /* Tmavší barva */
+}
+
+#collapseButtonRight {
+    background: none;
+    border: none;
+    font-size: 1.5rem; /* Velikost šipečky */
+    cursor: pointer;
+    color: #444; /* Barva šipečky */
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+
+/* Responsivita: Boxy pod sebe při menší šířce */
+@media (max-width: 768px) {
+    .text-block {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    .title {
+        padding-left: 50px;
+        padding-right: 50px;
+        font-size: 22px;
+    }
+
+    .info-icon {
+        width: 30px; /* Změň podle potřeby */
+        height: 30px; /* Změň podle potřeby */
+    }
+
+    .tooltip-text {
+        font-size: 10px;
+    }
+
+    .settings-container {
+        flex-direction: column; /* Zarovnání boxů pod sebe */
+    }
+
+    .setting-box {
+        width: 100%; /* Každý box zabere celou šířku */
+    }
+
+    .settings-row {
+        flex-direction: column; /* Boxy se zarovnají pod sebe */
+    }
+
+    /* Pro webkit prohlížeče */
+    input[type="range"]::-webkit-slider-thumb {
+        background: var(--slider-thumb-image) center no-repeat;
+        background-size: contain;
+        width: clamp(25px, 10vw, 25px);
+        height: clamp(25px, 10vw, 25px);
+        border-radius: 50%; 
+        cursor: pointer;
+        -webkit-appearance: none;
+        appearance: none;
+    }
+
+    /* Pro Firefox */
+    input[type="range"]::-moz-range-thumb {
+        width: clamp(25px, 10vw, 25px);
+        height: clamp(25px, 10vw, 25px);
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    /* Navigace bude výchozím stavem skrytá => menu se objeví až po kliku */
+    .nav-links {
+        display: none; 
+        flex-direction: column;
+        gap: 10px;
+        background-color: #fff; /* Můžeš přidat barvu pozadí */
+        position: absolute;     /* Např. absolutní pozice */
+        top: 80px;             /* Aby menu začínalo pod headerem */
+        right: 20px;           /* Přirazí se k pravé straně */
+        padding: 10px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    /* Pokud hamburger (případně nav) má třídu .open, zobraz nav-links */
+    .nav-links.open {
+        display: flex;
+    }
+
+    /* Zmenšit výšku headeru, aby se vše vešlo */
+    header {
+        height: auto;
+        justify-content: space-between; /* Logo vlevo, hamburger vpravo */
+        padding: 20px 30px;
+    }
+
+    /* Logo vlevo */
+    .logo-image {
+        width: 35px; /* menší šířka pro menší zařízení */
+        margin-right: 10px;
+    }
+
+    /* Schovat text vedle loga */
+    .logo-text {
+        display: none;
+    }
+
+    /* Hamburger menu posuneme na konec */
+    .hamburger {
+        display: flex; /* Zobraz hamburger menu na menších obrazovkách */
+        order: 2;
+        margin-left: auto;  /* Posune ho doprava */
+    }
+}
+
+@media (max-width: 1150px) {
+    /* Přepneme kontejner na sloupcové rozložení */
+    #bottom-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px; /* Mezera mezi řádky */
+    }
+    /* Necháme #controls-container s pevnou šířkou (např. 18rem) */
+    #controls-container {
+      order: 1;
+      /* Ponechte nebo nastavte pevnou šířku, například: */
+      width: 18rem;  /* nebo jakákoliv jiná pevná hodnota */
+    }
+    /* Ostatní selektory se mohou měnit podle potřeby */
+    #bottom-left-container {
+      order: 2;
+      width: 100%;
+    }
+    #bottom-right-container {
+      order: 3;
+      width: 100%;
+    }
+}

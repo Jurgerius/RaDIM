@@ -1,0 +1,183 @@
+{
+  "nav": {
+    "app": "APLIKACE",
+    "about": "O PROJEKTU",
+    "test": "TEST"
+  },
+  "footer": "© 2025 Studijní aplikace RaDIM",
+  "back_to_home": "Zpět na hlavní stránku",
+
+  "index": {
+    "welcome": "Interaktivní webová aplikace určená pro studenty a profesionály v oblasti zvukové tvorby, která umožňuje detailní zkoumání vlivu vzdálenosti mikrofonu, směrové charakteristiky a akustického prostředí na výsledný zvukový záznam.",
+
+    "feedback": {
+      "button": "Feedback",
+      "title": "Zpětná vazba",
+      "description": "Díky za Vaši zpětnou vazbu. Díky ní dokážu aplikaci vylepšit. Hodnocení: 1 nejlepší, 5 nejhorší",
+      "label_environment": "Jak na Vás působí prostředí aplikace?",
+      "placeholder_environment": "První dojem, plynulost, design...",
+      "label_intuitive": "Je ovládání aplikace intuitivní?",
+      "placeholder_intuitive": "Ovládání vzdálenosti, směrové charakteristiky a prostoru. Přehrávání, loop...",
+      "label_audio": "Jsou pro Vás audio vzorky dostačující?",
+      "placeholder_audio": "Hudební nástroje, zvolené prostory, vzdálenosti...",
+      "label_missing_param": "Je nějaký zvukový nebo hudební parametr, který Vám v ukázkách chybí?",
+      "placeholder_missing_param": "Dynamický a frekvenční rozsah, délka vzorků, hudební ukázky...",
+      "label_change": "Co byste na aplikaci změnili?",
+      "placeholder_change": "Napište, co byste změnili...",
+      "label_missing": "Co vám v aplikaci chybí?",
+      "placeholder_missing": "Napište, co byste přidali...",
+      "label_rating": "Hodnocení aplikace:",
+      "label_additional": "Další připomínky:",
+      "placeholder_additional": "Další komentáře...",
+      "submit": "Odeslat zpětnou vazbu",
+      "confirmation": "Zpětná vazba uložena!"
+    }
+  },
+
+  "app": {
+    "title": "Interaktivní aplikace",
+    "tooltip": "Jak s aplikací pracovat",
+    "intro": "Tato stránka umožňuje detailní zkoumání parametrů mikrofonního snímání, včetně polohy mikrofonu, jeho směrových charakteristik a jejich vlivu na zachycení zvuku různých hudebních nástrojů a lidského hlasu ve čtyřech odlišných akustických prostředích. Pro podrobnější informace o ovládání aplikace lze využít informační ikonu umístěnou v pravém horním rohu.",
+    "modal": {
+      "header": "Uživatelské rozhraní je rozděleno do čtyř hlavních ovládacích sekcí:",
+      "sections": {
+         "section1": "<strong>Výběr nástroje a jeho hrací techniky</strong>",
+         "section2": "<strong>Nastavení vzdálenosti mikrofonu od zdroje zvuku</strong>",
+         "section3": "<strong>Volba akustického prostoru a směrové charakteristiky mikrofonu</strong>",
+         "section4": "<strong>Přehrávací sekce</strong>"
+      },
+      "description": "Každý nástroj disponuje několika technikami hraní stupnice od nejnižšího možného tónu. Techniky pokrývají jak impulznější (např. staccato), tak plynulejší, legatovější charakter hry. Kromě toho je k dispozici jedna až dvě hudební ukázky – zpravidla jedna pomalejší a jedna rychlejší, což umožňuje posoudit zvukový charakter nástroje v různých kontextech.",
+      "distance": "Pro simulaci vzdálenosti mikrofonu jsou k dispozici čtyři pevně definované polohy v <strong>jednometrových krocích</strong>. Přesné vzdálenosti a úhel osy mikrofonů jsou popsány v záloze O projektu. Výběr vzdálenosti lze provést tažením směrové charakteristiky po ose mikrofonů.",
+      "directivity_intro": "Mikrofonní směrové charakteristiky zahrnují standardní vzory s definovanými poměry mezi přední a zadní kapslí:",
+      "directivity_list": {
+          "omni": "<strong>Koule</strong>: přední kapsle = 0dB, zadní kapsle = 0dB",
+          "wide_cardio": "<strong>Široká ledvina</strong>: přední kapsle = 0dB, zadní kapsle = -10dB",
+          "cardio": "<strong>Ledvina</strong>: přední kapsle = 0dB, zadní kapsle = -∞dB",
+          "super_cardio": "<strong>Superkardioida</strong>: přední kapsle = 0dB, zadní kapsle = -10dB + Ø",
+          "figure_8": "<strong>Osmička</strong>: přední kapsle = 0dB, zadní kapsle = 0dB + Ø"
+      },
+      "mic_selection": "Výběr směrové charakteristiky lze provést kliknutím na ikonu mikrofonu.",
+      "acoustic_intro": "Akustické prostředí lze měnit prostřednictvím ikony prostoru. K dispozici jsou čtyři typy prostorů:",
+      "acoustic_list": {
+         "studio": "<strong>Studio</strong>",
+         "concert_hall": "<strong>Koncertní sál</strong>",
+         "anechoic_chamber": "<strong>Mrtvá komora</strong>",
+         "church": "<strong>Kostel</strong>"
+      },
+      "playback": {
+        "part1": "Přehrávání zvukových ukázek je možné ovládat pomocí ikon: ",
+        "part2": ". Funkce smyčky umožňuje vymezení úseku, jehož délku lze upravit tažením hranic. Smyčku lze deaktivovat opětovným kliknutím."
+      },
+      "waveform": "Pro lepší orientaci je k dispozici vizualizace průběhu audio signálu ve formě vlnové křivky. Aktuálně zvolený prostor je zvýrazněn oranžovým okrajem. Kliknutím na waveformu lze přeskakovat.",
+      "close_button": "Zavřít"
+    },
+    "settings": {
+      "instrument_label": "Hudební nástroj:",
+      "instrument_violoncello": "Violoncello",
+      "instrument_violin": "Housle",
+      "instrument_clarinet": "Klarinet",
+      "instrument_snare": "Malý buben",
+      "instrument_voice": "Lidský hlas",
+      "instrument_test": "Testovací signály",
+      "technique_label": "Technika hry:",
+      "apply_button": "Použít nastavení"
+      
+    }
+  },
+
+  "about": {
+  "project_heading": "O projektu",
+    "project_description": "Tata interaktivní webová aplikace vznikla jako součást diplomové práce na oboru Zvuková tvorba na HAMU v Praze. Jejím cílem je umožnit zvukařům a studentům zvukové tvorby experimentovat s efekty, které vznikají při volbě různých vzdáleností mikrofonů a směrových charakteristik při nahrávání hudebních nástrojů a lidského hlasu.",
+    "vision_heading": "Vize a koncept aplikace",
+    "vision_description": "Projekt byl vytvořen s cílem poskytnout interaktivní nástroj, který ukazuje vliv prostoru, směrové charakteristiky a vzdálenosti mikrofonu od nástroje. Inspirací byl nedostatek prostředků umožňujících srovnávat tyto parametry v reálných podmínkách. Díky aplikaci si mohou uživatelé poslechnout zvukové změny způsobené různým umístěním mikrofonu a zvolenou směrovou charakteristikou v různých prostorech.",
+    "audio_heading": "Audio ukázky",
+    "audio_environments": "Nahrávání probíhalo ve čtyřech akustických prostředích, která reprezentují odlišné podmínky, v nichž se hudba běžně provozuje:",
+    "audio_environment": {
+      "concert_hall": "<strong>Koncertní sál</strong> (Sál Martinů na HAMU) – reprezentuje klasické prostředí pro komorní a orchestrální hudbu, kde se uplatňuje přirozená akustika prostoru.",
+      "studio": "<strong>Zvukové studio</strong> (HAMU) – prostor optimalizovaný pro studiovou práci, poskytující kontrolované akustické podmínky.",
+      "church": "<strong>Kostel</strong> (Kostel sv. Voršily v Praze) – příklad sakrálního prostoru s dlouhou doznívací dobou, typický pro chrámovou hudbu.",
+      "anechoic_chamber": "<strong>Mrtvá komora</strong> (MARC HAMU) – prostor zcela eliminující odrazy, což umožňuje vnímat čistý zvukový signál bez vlivu akustiky místnosti. Je to výborný referenční bod pro pochopení, jak odrazy ovlivňují vnímání zvuku."
+    },
+    "instruments_description": "Hudební nástroje byly zvoleny s cílem pokrýt co nejširší spektrum nástrojových skupin, přičemž výběr byl zároveň ovlivněn dostupností hudebníků a nástrojů:",
+    "instruments": {
+      "string": "Strunné nástroje: <strong>housle</strong>, <strong>violoncello</strong>",
+      "woodwind": "Dřevěné dechové nástroje: <strong>klarinet</strong>",
+      "percussion": "Bicí nástroje: <strong>malý buben</strong>",
+      "voice": "<strong>Lidský hlas</strong>: mluvené slovo, folklorní zpěv, operní zpěv"
+    },
+    "techniques_description": "Techniky byly zvoleny tak, aby pokryly co nejširší spektrum herních způsobů, a to ve střední dynamice. Pro každý nástroj byly zaznamenány jak plynulé, tak impulzní techniky. Kromě těchto základních ukázek jsou k dispozici také dvě hudební pasáže pro každý nástroj – jedna v rychlejším a druhá v pomalejším tempu, obě s proměnlivou dynamikou. Výjimkou je malý buben, kde je pouze jedna hudební ukázka, a lidský hlas, u kterého jsou k dispozici tři varianty: mluvené slovo a dva druhy zpěvu s odlišnými pěveckými technikami.",
+    "audio_recording_heading": "Záznam audio ukázek",
+    "audio_recording_description": "Nahrávání bylo realizováno se systémem více mikrofonních vzdáleností (1 m, 2 m, 3 m, 4 m od zdroje zvuku) a s použitím mikrofonů <strong>Sennheiser MKH 800 Twin</strong>, které umožňují změnu směrové charakteristiky v postprodukci.",
+    "microphone_distances": "Vzdálenosti mikrofonů byly určeny s ohledem na rozměry mrtvé komory a byly rozmístěny v ose hlavního vyzařování nástroje vždy po jednom metru. Tato vyzařovací osa byla stanovena na základě směrových vlastností daného nástroje a zkušeností s jeho přirozenou projekcí zvuku. Úhel mezi osou vyzařování nástroje a podlahou nebyl pro všechny nástroje totožný:",
+    "microphone_angle": {
+      "string": "Violoncello a housle – <strong>20°</strong>",
+      "woodwind": "Klarinet a malý buben – <strong>15°</strong>",
+      "voice": "Lidský hlas – <strong>0°</strong> (rovnoběžně se zemí)"
+    },
+    "preamp_levels": "Úrovně vstupních mikrofonních zesilovačů byly pro každý nástroj a lidský hlas v různých akustických prostředích nastaveny shodně, aby byla zachována konzistence při srovnávání. Mezi jednotlivými nástroji a lidským hlasem se však úrovně lišily, aby reflektovaly rozdíly v hlasitosti a dynamických vlastnostech zdrojů zvuku.",
+    "microphone_direction_heading": "Princip směrovosti mikrofonu",
+    "microphone_direction_description": "Díky využití mikrofonů Sennheiser MKH 800 Twin, které mají dva výstupy odpovídající dvěma protisměrným ledvinovým membránám mikrofonu, je možné měnit směrovou charakteristiku interpolací těchto dvou signálů i po záznamu. Uživatel aplikace si tak může zvolit mezi předdefinovanými směrovými charakteristikami s tímto nastavením:",
+    "microphone_direction": {
+      "koule": "<strong>Koule</strong> – úrovně z obou kapslí jsou shodné",
+      "wide_cardio": "<strong>Široká ledvina</strong> – úroveň zadní kapsle je o 10 dB slabší",
+      "cardio": "<strong>Ledvina</strong> – zadní kapsle má nulovou úroveň",
+      "super_cardio": "<strong>Superkardioida</strong> – úroveň zadní kapsle je o 10 dB slabší a vůči přední kapsli má otočenou polaritu",
+      "figure_8": "<strong>Osmička</strong> – úrovně z obou kapslí jsou shodné, ale zadní kapsle má otočenou polaritu"
+    },
+    "microphone_direction_measurement": "Tyto charakteristiky byly změřeny výrobcem a jejich grafy (směrová a frekvenční odezva) přikládám níže:",
+    "audio_editing_heading": "Úprava audio ukázek",
+    "audio_editing_description": "Audio ukázky byly následně postprodukčně upraveny střihovou editací, aby byly záznamy z různých akustických prostředí co nejvíce synchronizovány v tempu. I přes použití vizuálního metronomu při nahrávání bylo nutné některé pasáže časově zarovnat tak, aby výsledná porovnání byla přesnější, přičemž důraz byl kladen na to, aby střihy nebyly slyšitelné. Dále byla provedena normalizace hlasitosti, aby mezi jednotlivými ukázkami nevznikaly nežádoucí rozdíly v úrovni signálu.",
+    "audio_processing_heading": "Zpracování audia v aplikaci",
+    "audio_processing_description1": "Audio je v aplikaci zpracováváno přímo ve webovém prohlížeči v reálném čase pomocí <strong>Web Audio API</strong>. Každý zvukový soubor je načten do <strong>AudioBuffer</strong>, který umožňuje flexibilní manipulaci se zvukovými daty. Pro přehrávání se používá <strong>AudioBufferSourceNode</strong>, který je propojen s dalšími zvukovými uzly, především <strong>GainNode</strong>, jenž slouží k řízení hlasitosti jednotlivých stop.",
+    "audio_processing_description2": "Veškeré zvukové soubory jsou načteny současně při volbě nástroje a techniky hry. Struktura audiosystému je založena na konceptu tzv. <strong>audiopárech</strong> – dvojic zvukových souborů odpovídajících přední a zadní kapsli mikrofonu v konkrétní vzdálenosti od zdroje zvuku.",
+    "microphone_control_heading": "Řízení vzdálenosti mikrofonu",
+    "microphone_control_description": "Každá dostupná vzdálenost mikrofonu má svůj vlastní audiopár, přičemž všechny páry jsou po načtení aktivní a synchronizovaně přehrávány. Zvukový výstup je však slyšitelný pouze z dvojice odpovídající aktuálně zvolené vzdálenosti, zatímco ostatní audiopairy zůstávají ztlumené.",
+    "microphone_control_crossfade": "Přepínání mezi vzdálenostmi probíhá skokově, avšak pro eliminaci artefaktů a nežádoucích přechodových zvuků (např. lupanců) je implementován lineární crossfade mezi danými audiopáry s délkou <strong>50 ms</strong>. Tento krátký přechod plynule mění úrovně hlasitosti mezi sousedními audiopairy, čímž zajišťuje přirozený poslechový dojem i při rychlém přepínání mezi jednotlivými vzdálenostmi.",
+    "direction_control_heading": "Řízení směrové charakteristiky",
+    "direction_control_description": "Směrová charakteristika mikrofonu je v aplikaci simulována na základě poměrového zesílení signálů z přední a zadní kapsle mikrofonu. Každý audiopár obsahuje dva signály odpovídající těmto kapslím, jejichž vzájemný úrovňový poměr určuje výslednou směrovou charakteristiku.",
+    "direction_control_consistency": "Toto nastavení je aplikováno rovnoměrně na všechny audiopairy současně, což znamená, že při změně vzdálenosti zůstává směrová charakteristika konzistentní.",
+    "acoustic_control_heading": "Řízení akustického prostoru",
+    "acoustic_control_description": "Uživatel může také plynule přecházet mezi různými akustickými prostředími (mrtvá komora, koncertní sál, zvukové studio, kostel). Všechny odpovídající zvukové soubory pro aktuální nástroj, techniku hry a všechny vzdálenosti jsou načteny zároveň, což umožňuje okamžitou změnu akustického prostoru bez přerušení přehrávání.",
+    "similar_apps_heading": "Podobné aplikace",
+    "similar_apps": "<a href=\"http://soundmedia.jp/nuaudk/\">Porovnání různých mikrofonních pozic na orchestrální nástroje</a><br><a href=\"https://ciechanow.ski/sound/\">Výuková interaktivní aplikace o zvuku</a><br><a href=\"https://www.stefan-kiessling.com/index.php?Thema=recordingmenu&lang=en\">Různé mikrofonní systémy</a>",
+    "contact_heading": "Kontakt"
+  },
+  "test": {
+    "page_title": "RaDIM – Test",
+    "heading": "Poslechový AB test",
+    "description": "Na této stránce si můžete vyzkoušet otestovat vaše poslechové zkušenosti. Vyberte si hudební nástroj, techniku hry a parametr, který chcete uhádnout. Poté jen zvolte, jaké ostatní hodnoty mají mít ukázky A a B stejné. Až budete s výsledkem uhádnutí spokojeni, můžete si zobrazit řešení.",
+    "guess_label": "Co chci hádat:",
+    "guess_distance": "Vzdálenost",
+    "guess_pattern": "Směrová charakteristika",
+    "guess_space": "Prostor",
+    "fixed_distance_label": "Vzdálenost:",
+    "fixed_pattern_label": "Směrová charakteristika:",
+    "fixed_pattern_options": {
+      "omni": "Koule",
+      "cardioid": "Ledvina",
+      "wide_cardioid": "Široká ledvina",
+      "supercardioid": "Superkardioida",
+      "figure_8": "Osmička"
+    },
+    "fixed_space_label": "Prostor:",
+    "fixed_space_options": {
+      "studio": "Studio",
+      "church": "Kostel",
+      "anechoic_chamber": "Mrtvá komora",
+      "concert_hall": "Koncertní sál"
+    },
+    "confirm_button": "Potvrdit nastavení",
+    "box_A": "A",
+    "box_B": "B",
+    "show_results": "Zobrazit výsledky",
+    "results": {
+      "parameter": {
+        "distance": "Vzdálenost",
+        "pattern": "Směrová charakteristika",
+        "space": "Prostor"
+      },
+      "label_audioA": "{{parameter}} pro Audio A:",
+      "label_audioB": "{{parameter}} pro Audio B:"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "radim",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "dev": "vite",
+    "clean": "rm -rf dist",
+    "build": "npm run clean && vite build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.8.3",
+    "googleapis": "^146.0.0",
+    "i18next": "^24.2.3",
+    "i18next-http-backend": "^3.0.2",
+    "wavesurfer.js": "^7.9.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jurgerius/RaDIM.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Jurgerius/RaDIM/issues"
+  },
+  "homepage": "https://github.com/Jurgerius/RaDIM#readme",
+  "description": ""
+}

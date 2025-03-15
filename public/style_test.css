@@ -1,0 +1,215 @@
+
+/* ========== Styl pro testovací boxy (A a B) ========== */
+/* Obal testovacích políček */
+#testBoxes {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+  
+/* Styl základního testovacího boxu - větší rozměry */
+.test-box {
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  transition: border 0.2s, background-color 0.2s;
+  cursor: pointer;
+  width: 300px;       /* Nová šířka */
+  height: 200px;      /* Nová výška */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;    /* Zvětšený text */
+}
+  
+  
+  /* Zvýraznění aktivního boxu */
+  .test-box.active {
+    border: 2px solid #007BFF;
+    background-color: #e6f7ff;
+  }
+  
+  /* Styl tlačítek pro výběr ukázek */
+  .selectTest {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .selectTest:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Styl ovládacích tlačítek v přehrávacím panelu */
+  #controls button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+  }
+  
+  #controls img {
+    width: 24px;
+    height: 24px;
+  }
+
+/* Hlavní kontejner spojující waveform a ovládací tlačítka */
+.audio-container {
+    position: fixed; /* Zajistí, že kontejner zůstane na místě */
+    bottom: 20px; /* Vzdálenost od spodního okraje viditelné obrazovky */
+    left: 50%; /* Vycentrování na střed */
+    transform: translateX(-50%); /* Korekce horizontálního posunu */
+    z-index: 1000; /* Nad ostatními prvky */
+    background-color: transparent; /* Tmavé pozadí */
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    width: auto;
+    max-width: 1200px;
+    width: 100%;
+}
+
+
+/* ========== Styl kontejneru nastavení ========== */
+#settings {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 15px;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+/* Obecný styl pro řádky v #settings */
+#settings .row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+/* Řádek 4: Tlačítko "Potvrdit nastavení" */
+#settings .row.confirm {
+  justify-content: flex-end;
+}
+
+/* ========== Styl pro label nad dropdownem ========== */
+#settings label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 1rem;
+  color: #333;
+}
+
+/* ========== Styl pro dropdown menu (select) ========== */
+#settings select {
+  width: 100%;
+  max-width: 250px;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  font-size: 1rem;
+  font-family: inherit;
+  color: #333;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg width='10' height='7' viewBox='0 0 10 7' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%23333' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 10px 7px;
+}
+
+#settings select:hover {
+  border-color: #007BFF;
+}
+
+#settings select:focus {
+  border-color: #0056b3;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+
+
+
+
+
+
+/* Controls sekce */
+#controls-container {
+    background-color: #222;
+    /* Minimální šířka 200px, ideálně 25vw a maximálně 400px */
+    height: 70px;
+    width: 13rem;
+    display: flex;
+    flex-wrap: nowrap;  /* Umožní obsahu zalamovat se do dalšího řádku */
+    justify-content: center; /* Nebo space-between, dle požadovaného rozložení */
+    align-items: center;
+    /* Padding se také mění: minimálně 10px, ideálně 2vw a maximálně 20px */
+    padding: 1rem ;
+    border-radius: 70px;
+    margin: 0 auto;
+}
+
+/* Controls styl tlačítek */
+#controls {
+    display: flex;
+    flex-wrap: nowrap;  /* Tlačítka se při nedostatku místa zalamují */
+    gap: 1rem;
+    justify-content: center;
+}
+#controls button {
+    background: none; /* Výchozí styl */
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Minimálně 30px, ideálně 5vw a maximálně 60px */
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Přechody */
+    flex-shrink: 1; /* Umožní tlačítkům se zmenšovat, ale zůstanou vedle sebe */
+}
+
+#controls button img {
+    width: 100%; /* Obrázek vyplní tlačítko */
+    height: 100%;
+    display: block;
+    pointer-events: none; /* Zabraňuje interakci s obrázkem */
+    filter: invert(1); /* Převrácení barev */
+}
+
+#controls button.active img {
+    filter: invert(0.3) sepia(1) saturate(5) hue-rotate(90deg); /* Zelená */
+}
+
+#controls button.paused img {
+    filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); /* Modrá */
+}
+
+#controls button.loop-active img {
+    filter: invert(0.3) sepia(1) saturate(5) hue-rotate(0deg); /* Červená */
+}
+
+#controls button:hover {
+    transform: scale(1.1); /* Zvýšení velikosti při hoveru */
+}

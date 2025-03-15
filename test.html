@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="test.page_title">RaDIM – Test</title>
+  <link rel="stylesheet" href="public/style.css">
+  <link rel="stylesheet" href="public/style_test.css">
+  <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet'>
+  <link rel="icon" href="public/Images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+  <header>
+    <div class="logo-left">
+      <a href="index.html">
+        <img src="public/Images/logo_aplikace.png" alt="Logo" class="logo-image">
+      </a>
+      <span class="logo-text">RaDIM</span>
+    </div>
+    <nav class="nav-container">
+      <div class="nav-links">
+        <a href="app.html" data-i18n="nav.app">APLIKACE</a>
+        <a href="about.html" data-i18n="nav.about">O PROJEKTU</a>
+        <div class="language-buttons">
+          <button id="btn-cs">🇨🇿</button>
+          <button id="btn-en">🇬🇧</button>
+          <button id="btn-de">🇩🇪</button>
+        </div>
+      </div>
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+  </header>
+  
+  <section id="backgroud">
+    <div class="text-block">
+      <h1 class="h1" data-i18n="test.heading">Poslechový AB test</h1>
+      <p class="text" data-i18n="test.description">
+        Na této stránce si můžete vyzkoušet otestovat vaše poslechové zkušenosti. Vyberte si hudební nástroj, techniku hry a parametr, který chcete uhádnout. Poté jen zvolte, jaké ostatní hodnoty mají mít ukázky A a B stejné. Až budete s výsledkem uhádnutí spokojeni, můžete si zobrazit řešení.
+      </p>
+    </div>
+    
+    <div id="settings">
+      <!-- Řádek 1: Hudební nástroj, technika hry -->
+      <div class="row instrument-technique">
+        <div>
+          <label for="instrumentSelect" data-i18n="app.settings.instrument_label">Hudební nástroj:</label>
+          <select id="instrumentSelect">
+            <option value="violoncello" data-i18n="app.settings.instrument_violoncello">Violoncello</option>
+            <option value="violin" data-i18n="app.settings.instrument_violin">Housle</option>
+            <option value="clarinet" data-i18n="app.settings.instrument_clarinet">Klarinet</option>
+            <option value="snare" data-i18n="app.settings.instrument_snare">Snare</option>
+            <option value="voice" data-i18n="app.settings.instrument_voice">Lidský hlas</option>
+            <option value="test" data-i18n="app.settings.instrument_test">Testovací signály</option>
+          </select>
+        </div>
+        <div>
+          <label for="techniqueSelect" data-i18n="app.settings.technique_label">Technika hry:</label>
+          <select id="techniqueSelect">
+            <!-- Dynamicky naplněno funkcí updateTechniqueSelect() -->
+          </select>
+        </div>
+      </div>
+      
+      <!-- Řádek 2: Co chci hádat -->
+      <div class="row guess">
+        <label for="varyParameterSelect" data-i18n="test.guess_label">Co chci hádat:</label>
+        <select id="varyParameterSelect">
+          <option value="distance" data-i18n="test.guess_distance">Vzdálenost</option>
+          <option value="pattern" data-i18n="test.guess_pattern">Směrová charakteristika</option>
+          <option value="space" data-i18n="test.guess_space">Prostor</option>
+        </select>
+      </div>
+      
+      <!-- Řádek 3: Fixní parametry – všechny tři, z nichž se dynamicky zobrazí jen dvě -->
+      <div class="row fixed">
+        <div id="fixedDistanceDiv">
+          <label for="fixedDistanceSelect" data-i18n="test.fixed_distance_label">Vzdálenost:</label>
+          <select id="fixedDistanceSelect">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+        </div>
+        <div id="fixedPatternDiv">
+          <label for="fixedPatternSelect" data-i18n="test.fixed_pattern_label">Směrová charakteristika:</label>
+          <select id="fixedPatternSelect">
+            <!-- Naplní se funkcí populateFixedPatternSelect() -->
+          </select>
+        </div>
+        <div id="fixedSpaceDiv">
+          <label for="fixedSpaceSelect" data-i18n="test.fixed_space_label">Prostor:</label>
+          <select id="fixedSpaceSelect">
+            <!-- Naplní se funkcí populateFixedSpaceSelect() -->
+          </select>
+        </div>
+      </div>
+      
+      <!-- Řádek 4: Tlačítko "Potvrdit nastavení" -->
+      <div class="row confirm">
+        <button id="confirmSettings" class="cta-btn" data-i18n="test.confirm_button">Potvrdit nastavení</button>
+      </div>
+    </div>
+    
+    <!-- Oblast s testem AB (skrytá, dokud uživatel nepotvrdí nastavení) -->
+    <div id="testArea" style="display:none;">
+      <div id="testBoxes">
+        <div id="testA" class="test-box">
+          <h3 data-i18n="test.box_A">A</h3>
+        </div>
+        <div id="testB" class="test-box">
+          <h3 data-i18n="test.box_B">B</h3>
+        </div>
+      </div>
+      
+      <button id="showResults" class="cta-btn" data-i18n="test.show_results">Zobrazit výsledky</button>
+      <div id="results"></div>
+      
+      <!-- Přehrávací panel -->
+      <div id="controls-container">
+        <div id="controls">
+          <button id="play">
+            <img src="public/Images/play-icon.png" alt="Play">
+          </button>
+          <button id="stop">
+            <img src="public/Images/stop-icon.png" alt="Stop">
+          </button>
+          <button id="toggleLoop" class="loop-inactive">
+            <img src="public/Images/loop-icon.png" alt="Loop">
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <a data-i18n="back_to_home" href="index.html" class="cta-btn">Zpět na hlavní stránku</a>
+  
+  <footer>
+    <p data-i18n="footer">2025 Studijní aplikace RaDIM</p>
+    <p>Juraj Mišejka</p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next/23.7.3/i18next.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next-http-backend/2.2.0/i18nextHttpBackend.min.js"></script>
+  
+  <script type="module" src="src/main.js"></script>
+  <script type="module" src="src/script_test.js"></script>
+</body>
+</html>

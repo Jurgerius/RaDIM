@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="about.page_title">RaDIM – About</title>
+  <link rel="stylesheet" href="public/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <link rel="icon" href="public/Images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+  <header>
+    <div class="logo-left">
+      <a href="index.html">
+        <img src="public/Images/logo_aplikace.png" alt="Logo" class="logo-image">
+      </a>
+      <span class="logo-text">RaDIM</span>
+    </div>
+    <nav class="nav-container">
+      <div class="nav-links">
+        <a href="app.html" data-i18n="nav.app">APLIKACE</a>
+        <a href="test.html" data-i18n="nav.test">TEST</a>
+        <div class="language-buttons">
+          <button id="btn-cs">🇨🇿</button>
+          <button id="btn-en">🇬🇧</button>
+          <button id="btn-de">🇩🇪</button>
+        </div>
+      </div>
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+  </header>
+
+  <section id="backgroud">
+    <div class="text-block">
+      <h1 class="h1" data-i18n="about.project_heading">O projektu</h1>
+      <p class="text" data-i18n="about.project_description">
+        Tato interaktivní webová aplikace vznikla jako součást diplomové práce na oboru Zvuková tvorba na HAMU v Praze. Jejím cílem je umožnit zvukařům a studentům zvukové tvorby experimentovat s efekty, které vznikají při volbě různých vzdáleností mikrofonů a směrových charakteristik při nahrávání hudebních nástrojů a lidského hlasu.
+      </p>
+
+      <h2 class="h2" data-i18n="about.vision_heading">Vize a koncept aplikace</h2>
+      <p class="text" data-i18n="about.vision_description">
+        Projekt byl vytvořen s cílem poskytnout interaktivní nástroj, který ukazuje vliv prostoru, směrové charakteristiky a vzdálenosti mikrofonu od nástroje. Inspirací byl nedostatek prostředků umožňujících srovnávat tyto parametry v reálných podmínkách. Díky aplikaci si mohou uživatelé poslechnout zvukové změny způsobené různým umístěním mikrofonu a zvolenou směrovou charakteristikou v různých prostorech.
+      </p>
+
+      <h2 class="h2" data-i18n="about.audio_heading">Audio ukázky</h2>
+      <p class="text" data-i18n="about.audio_environments">
+        Nahrávání probíhalo ve čtyřech akustických prostředích, která reprezentují odlišné podmínky, v nichž se hudba provozuje:
+      </p>
+      <ul class="text">
+        <li data-i18n="about.audio_environment.concert_hall">
+          <strong>Koncertní sál</strong> (Sál Martinů na HAMU) – reprezentuje klasické prostředí pro komorní a orchestrální hudbu.
+        </li>
+        <li data-i18n="about.audio_environment.studio">
+          <strong>Zvukové studio</strong> (HAMU) – prostor optimalizovaný pro studiovou práci.
+        </li>
+        <li data-i18n="about.audio_environment.church">
+          <strong>Kostel</strong> (Kostel sv. Voršily v Praze) – příklad sakrálního prostoru s dlouhou dobou dozvuku.
+        </li>
+        <li data-i18n="about.audio_environment.anechoic_chamber">
+          <strong>Mrtvá komora</strong> (MARC HAMU) – prostor zcela eliminující odrazy. Slouží jako referenční bod pro pochopení, jak odrazy ovlivňují výsledný zvuk.
+        </li>
+      </ul>
+
+      <p class="text" data-i18n="about.instruments_description">
+        Hudební nástroje byly zvoleny s cílem pokrýt co nejširší spektrum nástrojových skupin, přičemž výběr byl zároveň ovlivněn dostupností hudebníků a nástrojů:
+      </p>
+      <ul class="text">
+        <li data-i18n="about.instruments.string">
+          Strunné nástroje: <strong>housle</strong>, <strong>violoncello</strong>
+        </li>
+        <li data-i18n="about.instruments.woodwind">
+          Dřevěné dechové nástroje: <strong>klarinet</strong>
+        </li>
+        <li data-i18n="about.instruments.percussion">
+          Bicí nástroje: <strong>malý buben</strong>
+        </li>
+        <li data-i18n="about.instruments.voice">
+          <strong>Lidský hlas</strong>: mluvené slovo, folklorní zpěv, operní zpěv
+        </li>
+      </ul>
+
+      <p class="text" data-i18n="about.techniques_description">
+        Techniky byly zvoleny tak, aby pokryly co nejširší spektrum herních způsobů, a to ve střední dynamice. Pro každý nástroj byly zaznamenány jak plynulé, tak impulzní techniky. Kromě těchto základních ukázek jsou k dispozici také dvě hudební pasáže pro každý nástroj – jedna v rychlejším a druhá v pomalejším tempu, obě s proměnlivou dynamikou. Výjimkou je malý buben, kde je pouze jedna hudební ukázka, a lidský hlas, u kterého jsou k dispozici tři varianty: mluvené slovo a dva druhy zpěvu s odlišnými pěveckými technikami.
+      </p>
+
+      <h3 class="h3" data-i18n="about.audio_recording_heading">Záznam audio ukázek</h3>
+      <p class="text" data-i18n="about.audio_recording_description">
+        Nahrávání bylo realizováno se systémem více mikrofonních vzdáleností (1 m, 2 m, 3 m, 4 m od zdroje zvuku) a s použitím mikrofonů <strong>Sennheiser MKH 800 Twin</strong>, které umožňují změnu směrové charakteristiky v postprodukci.
+      </p>
+
+      <p class="text" data-i18n="about.microphone_distances">
+        Vzdálenosti mikrofonů byly určeny s ohledem na rozměry mrtvé komory a byly rozmístěny v ose hlavního vyzařování nástroje vždy po jednom metru. Tato vyzařovací osa byla stanovena na základě směrových vlastností daného nástroje a zkušeností s jeho přirozenou projekcí zvuku. Úhel mezi osou vyzařování nástroje a podlahou nebyl pro všechny nástroje totožný:
+      </p>
+      <ul class="text">
+        <li data-i18n="about.microphone_angle.string">
+          Violoncello a housle – <strong>20°</strong>
+        </li>
+        <li data-i18n="about.microphone_angle.woodwind">
+          Klarinet a malý buben – <strong>15°</strong>
+        </li>
+        <li data-i18n="about.microphone_angle.voice">
+          Lidský hlas – <strong>0°</strong> (rovnoběžně se zemí)
+        </li>
+      </ul>
+
+      <div class="image-slider">
+        <button class="prev-btn">&#10094;</button>
+        <div class="image-wrapper">
+          <div class="image-container">
+            <img src="public/svg/vcl_quotas.svg" class="slider-image" alt="Violoncello">
+            <img src="public/svg/violin_quotas.svg" class="slider-image" alt="Violin">
+            <img src="public/svg/clar_quotas.svg" class="slider-image" alt="Clarinet">
+            <img src="public/svg/snare_quotas.svg" class="slider-image" alt="Snare Drum">
+            <img src="public/svg/voc_quotas.svg" class="slider-image" alt="Voice">
+          </div>
+        </div>
+        <button class="next-btn">&#10095;</button>
+      </div>
+
+      <p class="text" data-i18n="about.preamp_levels">
+        Úrovně vstupních mikrofonních zesilovačů byly pro každý nástroj a lidský hlas v různých akustických prostředích nastaveny shodně, aby byla zachována konzistence při srovnávání. Mezi jednotlivými nástroji a lidským hlasem se však úrovně lišily, aby reflektovaly rozdíly v hlasitosti a dynamických vlastnostech zdrojů zvuku.
+      </p>
+
+      <h4 class="h4" data-i18n="about.microphone_direction_heading">Princip směrovosti mikrofonu</h4>
+      <p class="text" data-i18n="about.microphone_direction_description">
+        Díky využití mikrofonů Sennheiser MKH 800 Twin, které mají dva výstupy odpovídající dvěma protisměrným ledvinovým membránám mikrofonu, je možné měnit směrovou charakteristiku interpolací těchto dvou signálů i po záznamu. Uživatel aplikace si tak může zvolit mezi předdefinovanými směrovými charakteristikami s tímto nastavením:
+      </p>
+      <ul class="text">
+        <li data-i18n="about.microphone_direction.koule">
+          <strong>Koule</strong> – úrovně z obou kapslí jsou shodné
+        </li>
+        <li data-i18n="about.microphone_direction.wide_cardio">
+          <strong>Široká ledvina</strong> – úroveň zadní kapsle je o 10 dB slabší
+        </li>
+        <li data-i18n="about.microphone_direction.cardio">
+          <strong>Ledvina</strong> – zadní kapsle má nulovou úroveň
+        </li>
+        <li data-i18n="about.microphone_direction.super_cardio">
+          <strong>Superkardioida</strong> – úroveň zadní kapsle je o 10 dB slabší a vůči přední kapsli má otočenou polaritu
+        </li>
+        <li data-i18n="about.microphone_direction.figure_8">
+          <strong>Osmička</strong> – úrovně z obou kapslí jsou shodné, ale zadní kapsle má otočenou polaritu
+        </li>
+      </ul>
+      <p class="text" data-i18n="about.microphone_direction_measurement">
+        Tyto charakteristiky byly změřeny výrobcem a jejich grafy (směrová a frekvenční odezva) přikládám níže:
+      </p>
+      <div class="image-slider">
+        <button class="prev-btn">&#10094;</button>
+        <div class="image-wrapper">
+          <div class="image-container">
+            <img src="public/Images/Directivity_patterns/Graphs/pattern-omni.png" class="slider-image" alt="pattern-omni">
+            <img src="public/Images/Directivity_patterns/Graphs/pattern-wide_cardio.png" class="slider-image" alt="pattern-wide_cardio">
+            <img src="public/Images/Directivity_patterns/Graphs/pattern-cardio.png" class="slider-image" alt="pattern-cardio">
+            <img src="public/Images/Directivity_patterns/Graphs/pattern-super_cardio.png" class="slider-image" alt="pattern-super_cardio">
+            <img src="public/Images/Directivity_patterns/Graphs/pattern-figure_8.png" class="slider-image" alt="pattern-figure_8">
+          </div>
+        </div>
+        <button class="next-btn">&#10095;</button>
+      </div>
+
+      <h3 class="h3" data-i18n="about.audio_editing_heading">Úprava audio ukázek</h3>
+      <p class="text" data-i18n="about.audio_editing_description">
+        Audio ukázky byly následně postprodukčně upraveny střihovou editací, aby byly záznamy z různých akustických prostředí co nejvíce synchronizovány v tempu. I přes použití vizuálního metronomu při nahrávání bylo nutné některé pasáže časově zarovnat tak, aby výsledná porovnání byla přesnější, přičemž důraz byl kladen na to, aby střihy nebyly slyšitelné. Dále byla provedena normalizace hlasitosti, aby mezi jednotlivými ukázkami nevznikaly nežádoucí rozdíly v úrovni signálu.
+      </p>
+
+      <h3 class="h3" data-i18n="about.audio_processing_heading">Zpracování audia v aplikaci</h3>
+      <p class="text" data-i18n="about.audio_processing_description1">
+        Audio je v aplikaci zpracováváno přímo ve webovém prohlížeči v reálném čase pomocí <strong>Web Audio API</strong>. Každý zvukový soubor je načten do <strong>AudioBuffer</strong>, který umožňuje flexibilní manipulaci se zvukovými daty. Pro přehrávání se používá <strong>AudioBufferSourceNode</strong>, který je propojen s dalšími zvukovými uzly, především <strong>GainNode</strong>, jenž slouží k řízení hlasitosti jednotlivých stop.
+      </p>
+      <p class="text" data-i18n="about.audio_processing_description2">
+        Veškeré zvukové soubory jsou načteny současně při volbě nástroje a techniky hry. Struktura audiosystému je založena na konceptu tzv. <strong>audiopárech</strong> – dvojic zvukových souborů odpovídajících přední a zadní kapsli mikrofonu v konkrétní vzdálenosti od zdroje zvuku.
+      </p>
+
+      <h4 class="h4" data-i18n="about.microphone_control_heading">
+        Řízení vzdálenosti mikrofonu
+      </h4>
+      <p class="text" data-i18n="about.microphone_control_description">
+        Každá dostupná vzdálenost mikrofonu má svůj vlastní audiopár, přičemž všechny páry jsou po načtení aktivní a synchronizovaně přehrávány. Zvukový výstup je však slyšitelný pouze z dvojice odpovídající aktuálně zvolené vzdálenosti, zatímco ostatní audiopairy zůstávají ztlumené.
+      </p>
+      <p class="text" data-i18n="about.microphone_control_crossfade">
+        Přepínání mezi vzdálenostmi probíhá skokově, avšak pro eliminaci artefaktů a nežádoucích přechodových zvuků (např. lupanců) je implementován lineární crossfade mezi danými audiopáry s délkou <strong>50 ms</strong>. Tento krátký přechod plynule mění úrovně hlasitosti mezi sousedními audiopairy, čímž zajišťuje přirozený poslechový dojem i při rychlém přepínání mezi jednotlivými vzdálenostmi.
+      </p>
+
+      <h4 class="h4" data-i18n="about.direction_control_heading">
+        Řízení směrové charakteristiky
+        </h4>
+      <p class="text" data-i18n="about.direction_control_description">
+        Směrová charakteristika mikrofonu je v aplikaci simulována na základě poměrového zesílení signálů z přední a zadní kapsle mikrofonu. Každý audiopár obsahuje dva signály odpovídající těmto kapslím, jejichž vzájemný úrovňový poměr určuje výslednou směrovou charakteristiku.
+      </p>
+      <p class="text" data-i18n="about.direction_control_consistency">
+        Toto nastavení je aplikováno rovnoměrně na všechny audiopairy současně, což znamená, že při změně vzdálenosti zůstává směrová charakteristika konzistentní.
+      </p>
+
+      <h4 class="h4" data-i18n="about.acoustic_control_heading">
+        Řízení akustického prostoru
+      </h4>
+      <p class="text" data-i18n="about.acoustic_control_description">
+        Uživatel může také plynule přecházet mezi různými akustickými prostředími (mrtvá komora, koncertní sál, zvukové studio, kostel). Všechny odpovídající zvukové soubory pro aktuální nástroj, techniku hry a všechny vzdálenosti jsou načteny zároveň, což umožňuje okamžitou změnu akustického prostoru bez přerušení přehrávání.
+      </p>
+
+      <h2 class="h2" data-i18n="about.similar_apps_heading">Podobné aplikace</h2>
+      <p class="text" data-i18n="about.similar_apps">
+        <a href="http://soundmedia.jp/nuaudk/">Porovnání různých mikrofonních pozic na orchestrální nástroje</a><br>
+        <a href="https://ciechanow.ski/sound/">Výuková interaktivní aplikace o zvuku</a><br>
+        <a href="https://www.stefan-kiessling.com/index.php?Thema=recordingmenu&lang=en">Různé mikrofonní systémy</a>
+      </p>
+
+      <h2 class="h2" data-i18n="about.contact_heading">Kontakt</h2>
+      <p class="text">Juraj Mišejka</p>
+      <p class="text">
+        <a href="mailto:juraj.misejka1@gmail.com?subject=Webová aplikace RaDIM">juraj.misejka1@gmail.com</a>
+      </p>
+    </div>
+  </section>
+
+  <a data-i18n="back_to_home" href="index.html" class="cta-btn">Zpět na hlavní stránku</a>
+  <footer>
+    <p data-i18n="footer">2025 Studijní aplikace RaDIM</p>
+    <p>Juraj Mišejka</p>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.image-slider').forEach((slider) => {
+      let currentIndex = 0;
+      const images = slider.querySelectorAll(".slider-image");
+      const imageContainer = slider.querySelector(".image-container");
+      const totalImages = images.length;
+  
+      function updateSliderPosition() {
+          const offset = -currentIndex * 100;
+          imageContainer.style.transform = `translateX(${offset}%)`;
+      }
+  
+      slider.querySelector(".prev-btn").addEventListener("click", () => {
+          currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+          updateSliderPosition();
+      });
+  
+      slider.querySelector(".next-btn").addEventListener("click", () => {
+          currentIndex = (currentIndex + 1) % totalImages;
+          updateSliderPosition();
+      });
+  
+      updateSliderPosition();
+    });
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next/23.7.3/i18next.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next-http-backend/2.2.0/i18nextHttpBackend.min.js"></script>
+
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>

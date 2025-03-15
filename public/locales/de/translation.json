@@ -1,0 +1,179 @@
+{
+  "nav": {
+    "app": "APPLIKATION",
+    "about": "ÜBER DAS PROJEKT",
+    "test": "TEST"
+  },
+  "footer": "© 2025 Study-App RaDIM",
+  "back_to_home": "Zurück zur Hauptseite",
+  "index": {
+    "welcome": "Eine interaktive Applikation, die für Studenten und Fachleute im Bereich der Klanggestaltung entwickelt wurde und eine detaillierte Untersuchung des Einflusses von Mikrofonabstand, Richtcharakteristik und akustischer Umgebung auf die endgültige Klangaufnahme ermöglicht.",
+    "feedback": {
+      "button": "Feedback",
+      "title": "Feedback",
+      "description": "Vielen Dank für Ihr Feedback. Es hilft uns, die Applikation zu verbessern. Bewertung: 1 am besten, 5 am schlechtesten",
+      "label_environment": "Wie wirkt sich die Umgebung der Applikation auf Sie aus?",
+      "placeholder_environment": "Erster Eindruck, Flüssigkeit, Design...",
+      "label_intuitive": "Ist die Bedienung der Applikation intuitiv?",
+      "placeholder_intuitive": "Steuerung von Abstand, Richtcharakteristik und Raum. Wiedergabe, Loop...",
+      "label_audio": "Sind die Audio-Beispiele für Sie ausreichend?",
+      "placeholder_audio": "Musikinstrumente, ausgewählte Räume, Abstände...",
+      "label_missing_param": "Fehlt Ihnen ein bestimmter audio- oder musikalischer Parameter in den Beispielen?",
+      "placeholder_missing_param": "Dynamik- und Frequenzbereich, Probenlänge, musikalische Beispiele...",
+      "label_change": "Was würden Sie an der Applikation ändern?",
+      "placeholder_change": "Schreiben Sie, was Sie ändern würden...",
+      "label_missing": "Was fehlt Ihnen an der Applikation?",
+      "placeholder_missing": "Schreiben Sie, was Sie hinzufügen würden...",
+      "label_rating": "Bewertung der Applikation:",
+      "label_additional": "Weitere Anmerkungen:",
+      "placeholder_additional": "Weitere Kommentare...",
+      "submit": "Feedback absenden",
+      "confirmation": "Feedback gespeichert!"
+    }
+  },
+  "app": {
+    "title": "Interaktive Applikation",
+    "tooltip": "So nutzen Sie die Applikation",
+    "intro": "Diese Seite ermöglicht eine detaillierte Untersuchung der Parameter der Mikrofonaufnahme, einschließlich der Position des Mikrofons, seiner Richtcharakteristika und deren Einfluss auf die Erfassung des Klangs verschiedener Musikinstrumente und der menschlichen Stimme in vier unterschiedlichen akustischen Umgebungen. Für detailliertere Informationen zur Bedienung der Applikation können Sie das Informationssymbol in der oberen rechten Ecke verwenden.",
+    "modal": {
+      "header": "Die Benutzeroberfläche ist in vier Hauptsteuerungsbereiche unterteilt:",
+      "sections": {
+         "section1": "<strong>Auswahl des Instruments und seiner Spieltechnik</strong>",
+         "section2": "<strong>Einstellung des Mikrofonabstands zur Schallquelle</strong>",
+         "section3": "<strong>Wahl der akustischen Umgebung und des Richtcharakters des Mikrofons</strong>",
+         "section4": "<strong>Wiedergabebereich</strong>"
+      },
+      "description": "Jedes Instrument bietet mehrere Techniken, beginnend mit dem niedrigstmöglichen Ton. Diese Techniken umfassen sowohl einen impulsiveren (z. B. staccato) als auch einen fließenderen, legato Charakter. Zusätzlich sind ein oder zwei musikalische Beispiele verfügbar – typischerweise eines langsamer und eines schneller –, was eine Einschätzung des Klangcharakters des Instruments in unterschiedlichen Kontexten ermöglicht.",
+      "distance": "Zur Simulation des Mikrofonabstands stehen vier fest definierte Positionen in <strong>Ein-Meter-Schritten</strong> zur Verfügung. Exakte Abstände und der Winkel der Mikrofonachse werden im Abschnitt 'Über das Projekt' beschrieben. Der Abstand kann durch Ziehen des Richtmusters entlang der Mikrofonachse gewählt werden.",
+      "directivity_intro": "Mikrofon-Richtcharakteristika umfassen standardmäßige Muster mit definierten Verhältnissen zwischen der Front- und der Rückkapsel:",
+      "directivity_list": {
+          "omni": "<strong>Kugel</strong>: vorne = 0dB, hinten = 0dB",
+          "wide_cardio": "<strong>Breite-Niere</strong>: vorne = 0dB, hinten = -10dB",
+          "cardio": "<strong>Niere</strong>: vorne = 0dB, hinten = -∞dB",
+          "super_cardio": "<strong>Enge-Niere</strong>: vorne = 0dB, hinten = -10dB + Ø",
+          "figure_8": "<strong>Figur 8</strong>: vorne = 0dB, hinten = 0dB + Ø"
+      },
+      "mic_selection": "Die Auswahl des Richtmusters erfolgt durch Klicken auf das Mikrofonsymbol.",
+      "acoustic_intro": "Die akustische Umgebung kann über das Raumsymbol geändert werden. Es stehen vier Raumtypen zur Verfügung:",
+      "acoustic_list": {
+         "studio": "<strong>Studio</strong>",
+         "concert_hall": "<strong>Konzerthalle</strong>",
+         "anechoic_chamber": "<strong>Schalltoter Raum</strong>",
+         "church": "<strong>Kirche</strong>"
+      },
+      "playback": {
+        "part1": "Die Wiedergabe von Klangbeispielen kann über die Symbole für: ",
+        "part2": ". Mit der Loop-Funktion können Sie einen Abschnitt definieren, dessen Länge durch Ziehen der Begrenzungen angepasst wird. Die Schleife kann durch erneuten Klick deaktiviert werden."
+      },
+      "waveform": "Für eine bessere Orientierung wird eine Wellenformvisualisierung des Audiosignals bereitgestellt. Der aktuell gewählte Raum wird mit einem orangefarbenen Rand hervorgehoben. Durch Klicken auf die Wellenform kann die Wiedergabe beliebig übersprungen werden.",
+      "close_button": "Schließen"
+    },
+    "settings": {
+      "instrument_label": "Musikinstrument:",
+      "instrument_violoncello": "Violoncello",
+      "instrument_violin": "Geige",
+      "instrument_clarinet": "Klarinette",
+      "instrument_snare": "Kleintrommel",
+      "instrument_voice": "Menschliche Stimme",
+      "instrument_test": "Testsignale",
+      "technique_label": "Spieltechnik:",
+      "apply_button": "Einstellungen anwenden"
+    }
+  },
+  "about": {
+    "page_title": "RaDIM – Über das Projekt",
+    "project_heading": "Über das Projekt",
+    "project_description": "Diese interaktive Webanwendung wurde im Rahmen einer Diplomarbeit im Fach Klanggestaltung an der HAMU in Prag entwickelt. Ihr Ziel ist es, Tontechnikern und Studenten die Möglichkeit zu geben, mit Effekten zu experimentieren, die durch die Wahl verschiedener Mikrofonabstände und Richtcharakteristika beim Aufnehmen von Musikinstrumenten und der menschlichen Stimme entstehen.",
+    "vision_heading": "Vision und Konzept der Anwendung",
+    "vision_description": "Das Projekt wurde entwickelt, um ein interaktives Werkzeug bereitzustellen, das den Einfluss von Raum, Mikrofonabstand und Richtcharakteristik demonstriert. Es entstand aus dem Mangel an Mitteln, die einen Vergleich dieser Parameter unter realen Bedingungen ermöglichen. Dank der Anwendung können Benutzer Klangveränderungen wahrnehmen, die durch unterschiedliche Mikrofonpositionen und gewählte Richtcharakteristika in verschiedenen Räumen verursacht werden.",
+    "audio_heading": "Audio-Beispiele",
+    "audio_environments": "Die Aufnahmen wurden in vier akustischen Umgebungen durchgeführt, die unterschiedliche Bedingungen repräsentieren, unter denen Musik üblicherweise gespielt wird:",
+    "audio_environment": {
+      "concert_hall": "<strong>Konzerthalle</strong> (Martinů Hall an der HAMU) – repräsentiert eine klassische Umgebung für Kammer- und Orchestermusik, in der die natürliche Akustik des Raums genutzt wird.",
+      "studio": "<strong>Tonstudio</strong> (HAMU) – ein Raum, der für Studioproduktionen optimiert ist und kontrollierte akustische Bedingungen bietet.",
+      "church": "<strong>Kirche</strong> (St. Voršila Kirche in Prag) – ein Beispiel für einen sakralen Raum mit langer Nachhallzeit, typisch für Kirchenmusik.",
+      "anechoic_chamber": "<strong>Schalltoter Raum</strong> (MARC HAMU) – ein Raum, der Reflexionen vollständig eliminiert, sodass der reine Klang ohne den Einfluss der Raumakustik wahrgenommen werden kann. Er dient als hervorragender Referenzpunkt, um zu verstehen, wie Reflexionen das Klangbild beeinflussen."
+    },
+    "instruments_description": "Die Musikinstrumente wurden ausgewählt, um ein möglichst breites Spektrum an Instrumentengruppen abzudecken, wobei die Auswahl auch von der Verfügbarkeit von Musikern und Instrumenten beeinflusst wurde:",
+    "instruments": {
+      "string": "Streichinstrumente: <strong>Violine</strong>, <strong>Violoncello</strong>",
+      "woodwind": "Holzblasinstrumente: <strong>Klarinette</strong>",
+      "percussion": "Schlaginstrumente: <strong>Kleintrommel</strong>",
+      "voice": "<strong>Menschliche Stimme</strong>: gesprochenes Wort, Volksgesang, Operngesang"
+    },
+    "techniques_description": "Die Spieltechniken wurden so gewählt, dass sie ein möglichst breites Spektrum an Spielweisen in mittlerer Dynamik abdecken. Für jedes Instrument wurden sowohl fließende als auch impulsive Techniken aufgezeichnet. Zusätzlich stehen für jedes Instrument zwei musikalische Passagen zur Verfügung – eine in schnellerem und eine in langsamerem Tempo, beide mit variabler Dynamik. Eine Ausnahme bildet das Snaredrum, für das nur ein musikalisches Beispiel vorliegt, und bei der menschlichen Stimme gibt es drei Varianten: gesprochenes Wort und zwei Arten des Gesangs mit unterschiedlichen vokalen Techniken.",
+    "audio_recording_heading": "Aufnahme der Audio-Beispiele",
+    "audio_recording_description": "Die Aufnahme erfolgte mit einem System von mehreren Mikrofonabständen (1 m, 2 m, 3 m, 4 m von der Schallquelle entfernt) und unter Verwendung von <strong>Sennheiser MKH 800 Twin</strong>-Mikrofonen, die eine Änderung der Richtcharakteristik in der Postproduktion ermöglichen.",
+    "microphone_distances": "Die Mikrofonabstände wurden unter Berücksichtigung der Abmessungen des schalltoten Raums festgelegt und entlang der Hauptstrahlrichtung des Instruments in Ein-Meter-Schritten angeordnet. Diese Strahlrichtung wurde basierend auf den Richtcharakteristika des jeweiligen Instruments und den Erfahrungen mit dessen natürlicher Klangprojektion bestimmt. Der Winkel zwischen der Abstrahlachse des Instruments und dem Boden war nicht für alle Instrumente gleich:",
+    "microphone_angle": {
+      "string": "Violoncello und Violine – <strong>20°</strong>",
+      "woodwind": "Klarinette und Kleintrommel – <strong>15°</strong>",
+      "voice": "Menschliche Stimme – <strong>0°</strong> (parallel zum Boden)"
+    },
+    "preamp_levels": "Die Pegel der Mikrofonvorverstärker wurden für jedes Instrument und die menschliche Stimme in verschiedenen akustischen Umgebungen einheitlich eingestellt, um Konsistenz beim Vergleich zu gewährleisten. Zwischen den Instrumenten und der menschlichen Stimme variierten die Pegel jedoch, um Unterschiede in der Lautstärke und den dynamischen Eigenschaften der Schallquellen widerzuspiegeln.",
+    "microphone_direction_heading": "Prinzip der Mikrofon-Richtcharakteristik",
+    "microphone_direction_description": "Die Richtcharakteristik des Mikrofons wird in der Anwendung simuliert, basierend auf dem Verhältnis der Verstärkung der Signale der vorderen und hinteren Mikrofonskapseln. Jedes Audio-Paar enthält zwei Signale, die diesen Kapseln entsprechen, und ihr Verhältnis bestimmt die resultierende Richtcharakteristik.",
+    "microphone_direction": {
+      "koule": "<strong>Kugel</strong> – die Pegel beider Kapseln sind identisch",
+      "wide_cardio": "<strong>Breite-Niere</strong> – der Pegel der hinteren Kapsel ist um 10 dB schwächer",
+      "cardio": "<strong>Niere</strong> – die hintere Kapsel hat einen Nullpegel",
+      "super_cardio": "<strong>Superkardioid</strong> – der Pegel der hinteren Kapsel ist um 10 dB schwächer und die Polarität ist im Vergleich zur vorderen Kapsel umgekehrt",
+      "figure_8": "<strong>Figur 8</strong> – die Pegel beider Kapseln sind identisch, jedoch ist die Polarität der hinteren Kapsel umgekehrt"
+    },
+    "microphone_direction_measurement": "Diese Eigenschaften wurden vom Hersteller gemessen, und ihre Grafiken (Richt- und Frequenzgang) sind unten beigefügt:",
+    "audio_editing_heading": "Bearbeitung der Audio-Beispiele",
+    "audio_editing_description": "Die Audio-Beispiele wurden anschließend in der Postproduktion durch Schnittbearbeitung angepasst, sodass die Aufnahmen aus verschiedenen akustischen Umgebungen so gut wie möglich im Tempo synchronisiert sind. Trotz der Verwendung eines visuellen Metronoms während der Aufnahme war es notwendig, bestimmte Passagen zeitlich anzugleichen, um genauere Vergleiche zu ermöglichen, wobei darauf geachtet wurde, dass die Schnitte nicht hörbar waren. Zusätzlich wurde eine Normalisierung der Lautstärke durchgeführt, um unerwünschte Unterschiede im Signalpegel zwischen den Beispielen zu vermeiden.",
+    "audio_processing_heading": "Audio-Verarbeitung in der Applikation",
+    "audio_processing_description1": "Audio wird in der Applikation in Echtzeit direkt im Webbrowser mithilfe der <strong>Web Audio API</strong> verarbeitet. Jede Audiodatei wird in einen <strong>AudioBuffer</strong> geladen, der eine flexible Manipulation der Audiodaten ermöglicht. Zur Wiedergabe wird ein <strong>AudioBufferSourceNode</strong> verwendet, der mit anderen Audioknoten verbunden ist, vor allem mit einem <strong>GainNode</strong>, der zur Steuerung der Lautstärke einzelner Spuren dient.",
+    "audio_processing_description2": "Alle Audiodateien werden gleichzeitig geladen, wenn das Instrument und die Spieltechnik ausgewählt werden. Das Audiosystem basiert auf dem Konzept der sogenannten <strong>Audio-Paare</strong> – Paaren von Audiodateien, die den vorderen und hinteren Mikrofonskapseln in einem bestimmten Abstand von der Schallquelle entsprechen.",
+    "microphone_control_heading": "Steuerung des Mikrofonabstands",
+    "microphone_control_description": "Jeder verfügbare Mikrofonabstand hat sein eigenes Audio-Paar, wobei alle Paare nach dem Laden synchron wiedergegeben werden. Allerdings ist nur das Paar hörbar, das dem aktuell gewählten Abstand entspricht, während die anderen Audio-Paare stumm bleiben.",
+    "microphone_control_crossfade": "Das Umschalten zwischen den Abständen erfolgt sprunghaft; um jedoch Artefakte und unerwünschte Übergangsgeräusche (z. B. Klicks) zu vermeiden, wird ein linearer Crossfade zwischen den entsprechenden Audio-Paaren mit einer Dauer von <strong>50 ms</strong> implementiert. Dieser kurze Übergang passt die Lautstärkepegel zwischen benachbarten Audio-Paaren sanft an und sorgt so für ein natürliches Hörerlebnis, selbst bei schnellem Wechsel zwischen unterschiedlichen Abständen.",
+    "direction_control_heading": "Steuerung der Richtcharakteristik",
+    "direction_control_description": "Die Richtcharakteristik des Mikrofons wird in der Applikation simuliert, basierend auf dem Verhältnis der Verstärkung der Signale von der vorderen und der hinteren Mikrofonskapsel. Jedes Audio-Paar enthält zwei Signale, die diesen Kapseln entsprechen, und ihr relatives Pegelverhältnis bestimmt die resultierende Richtcharakteristik.",
+    "direction_control_consistency": "Diese Einstellung wird gleichmäßig auf alle Audio-Paare gleichzeitig angewendet, was bedeutet, dass die Richtcharakteristik bei Änderung des Abstands konsistent bleibt.",
+    "acoustic_control_heading": "Steuerung des akustischen Raums",
+    "acoustic_control_description": "Der Benutzer kann auch fließend zwischen verschiedenen akustischen Umgebungen (anechoic chamber, concert hall, tonstudio, kirche) wechseln. Alle entsprechenden Audiodateien für das aktuelle Instrument, die Spieltechnik und alle Abstände werden gleichzeitig geladen, sodass ein sofortiger Wechsel der akustischen Umgebung ohne Unterbrechung der Wiedergabe möglich ist.",
+    "similar_apps_heading": "Ähnliche Anwendungen",
+    "similar_apps": "<a href=\"http://soundmedia.jp/nuaudk/\">Vergleich verschiedener Mikrofonpositionen für Orchesterinstrumente</a><br><a href=\"https://ciechanow.ski/sound/\">Interaktive Lernanwendung über Klang</a><br><a href=\"https://www.stefan-kiessling.com/index.php?Thema=recordingmenu&lang=en\">Verschiedene Mikrofon-Setups</a>",
+    "contact_heading": "Kontakt"
+  },
+  "test": {
+    "page_title": "RaDIM – Test",
+    "heading": "AB-Hörtest",
+    "description": "Auf dieser Seite können Sie Ihre Hörfähigkeiten testen. Wählen Sie ein Musikinstrument, eine Spieltechnik und einen Parameter, den Sie erraten möchten. Wählen Sie dann einfach aus, welche der anderen Werte für die Beispiele A und B gleich sein sollen. Sobald Sie mit Ihrer Vermutung zufrieden sind, können Sie die Lösung anzeigen.",
+    "guess_label": "Was möchte ich erraten:",
+    "guess_distance": "Abstand",
+    "guess_pattern": "Richtcharakteristik",
+    "guess_space": "Raum",
+    "fixed_distance_label": "Abstand:",
+    "fixed_pattern_label": "Richtcharakteristik:",
+    "fixed_pattern_options": {
+      "omni": "Kugel",
+      "cardioid": "Breite-Niere",
+      "wide_cardioid": "Niere",
+      "supercardioid": "Superkardioid",
+      "figure_8": "Figur 8"
+    },
+    "fixed_space_label": "Raum:",
+    "fixed_space_options": {
+      "studio": "Tonstudio",
+      "church": "Kirche",
+      "anechoic_chamber": "Schalltoter Raum",
+      "concert_hall": "Konzerthalle"
+    },
+    "confirm_button": "Einstellungen bestätigen",
+    "box_A": "A",
+    "box_B": "B",
+    "show_results": "Ergebnisse anzeigen",
+    "results": {
+      "parameter": {
+        "distance": "Abstand",
+        "pattern": "Richtcharakteristik",
+        "space": "Raum"
+      },
+      "label_audioA": "{{parameter}} für Audio A:",
+      "label_audioB": "{{parameter}} für Audio B:"
+    }
+  }
+}

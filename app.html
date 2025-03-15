@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RaDIM - App</title>
+    <link rel="stylesheet" href="public/style_app.css">
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet'>
+    <link rel="icon" href="public/Images/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo-left">
+            <a href="index.html">
+                <img src="public/Images/logo_aplikace.png" alt="Logo" class="logo-image">  <!-- Levé logo -->
+            </a>
+            <span class="logo-text">RaDIM</span> <!-- Text vedle loga vlevo -->
+        </div>
+
+        <nav class="nav-container">
+            <div class="nav-links">
+                <a href="about.html" data-i18n="nav.about">O PROJEKTU</a>
+                <a href="test.html" data-i18n="nav.test">TEST</a>
+
+                <div class="language-buttons">
+                    <button id="btn-cs">🇨🇿</button>
+                    <button id="btn-en">🇬🇧</button>
+                    <button id="btn-de">🇩🇪</button>
+                </div>
+            </div>
+
+            <!-- Hamburger ikonka, viditelná jen v malém rozlišení -->
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>   
+
+    <div class="title">
+        <h1 data-i18n="app.title">Interaktivní aplikace</h1>  
+        <div class="info-container">
+            <button class="info-button" onclick="openModal()">
+                <img src="public/Images/info.png" alt="Info" class="info-icon">
+            </button>
+            <!-- Tooltip v HTML -->
+            <div class="tooltip-text" id="tooltipText" data-i18n="app.tooltip">Jak s aplikací pracovat</div>
+        </div>
+   </div>
+
+   <div class="text-block">
+        <p class="text" data-i18n="app.intro">
+            Tato stránka umožňuje detailní zkoumání parametrů mikrofonního snímání, včetně polohy mikrofonu, jeho směrových charakteristik a jejich vlivu na zachycení zvuku různých hudebních nástrojů a lidského hlasu ve čtyřech odlišných akustických prostředích. Pro podrobnější informace o ovládání aplikace lze využít informační ikonu umístěnou v pravém horním rohu.
+        </p>
+    </div>
+
+    <!-- Spinner element -->
+    <div id="spinner" class="spinner" style="display: none;"></div>
+
+    <!-- MODAL -->
+    <div id="infoModal" class="modal-overlay">
+        <div class="modal-box">
+            <p class="modal-text" data-i18n="app.modal.header">
+                Uživatelské rozhraní je rozděleno do čtyř hlavních ovládacích sekcí:
+            </p>
+            <ul class="modal-text">
+                <li data-i18n="app.modal.sections.section1"><strong>Výběr nástroje a jeho hrací techniky</strong></li>
+                <li data-i18n="app.modal.sections.section2"><strong>Nastavení vzdálenosti mikrofonu od zdroje zvuku</strong></li>
+                <li data-i18n="app.modal.sections.section3"><strong>Volba akustického prostoru a směrové charakteristiky mikrofonu</strong></li>
+                <li data-i18n="app.modal.sections.section4"><strong>Přehrávací sekce</strong></li>
+            </ul>
+            <p class="modal-text" data-i18n="app.modal.description">
+                Každý nástroj disponuje několika technikami hraní stupnice od nejnižšího možného tónu. Techniky pokrývají jak impulznější (např. staccato), tak plynulejší, legatovější charakter hry. Kromě toho je k dispozici jedna až dvě hudební ukázky – zpravidla jedna pomalejší a jedna rychlejší, což umožňuje posoudit zvukový charakter nástroje v různých kontextech.
+            </p>
+            <p class="modal-text" data-i18n="app.modal.distance">
+                Pro simulaci vzdálenosti mikrofonu od zdroje jsou k dispozici čtyři pevně definované polohy v <strong>jednometrových krocích</strong>. Přesné vzdálenosti a úhel osy mikrofonů jsou popsány v záloze <a href="/src/about.html">O projektu</a>. Výběr vzdálenosti lze provést tažením směrové charakteristiky po ose mikrofonů.
+            </p>
+            <p class="modal-text" data-i18n="app.modal.directivity_intro">
+                Mikrofonní směrové charakteristiky zahrnují standardní vzory s definovanými poměry mezi přední a zadní kapslí:
+            </p>
+            <ul class="modal-text">
+                <li>
+                  <p>
+                    <img src="public/Images/Directivity_patterns/omni.png" alt="Koule">
+                    <span data-i18n="app.modal.directivity_list.omni">
+                      <strong>koule:</strong> přední kapsle = 0dB, zadní kapsle = 0dB
+                    </span>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <img src="public/Images/Directivity_patterns/wide_cardio.png" alt="Široká ledvina">
+                    <span data-i18n="app.modal.directivity_list.wide_cardio">
+                      <strong>široká ledvina:</strong> přední kapsle = 0dB, zadní kapsle = -10dB
+                    </span>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <img src="public/Images/Directivity_patterns/cardio.png" alt="Ledvina">
+                    <span data-i18n="app.modal.directivity_list.cardio">
+                      <strong>ledvina:</strong> přední kapsle = 0dB, zadní kapsle = -∞dB
+                    </span>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <img src="public/Images/Directivity_patterns/super_cardio.png" alt="Superkardioida">
+                    <span data-i18n="app.modal.directivity_list.super_cardio">
+                      <strong>superkardioida:</strong> přední kapsle = 0dB, zadní kapsle = -10dB + Ø
+                    </span>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <img src="public/Images/Directivity_patterns/figure_8.png" alt="Osmička">
+                    <span data-i18n="app.modal.directivity_list.figure_8">
+                      <strong>osmička:</strong> přední kapsle = 0dB, zadní kapsle = 0dB + Ø
+                    </span>
+                  </p>
+                </li>
+              </ul>
+            <p class="modal-text" data-i18n="app.modal.mic_selection">
+                Výběr směrové charakteristiky lze provést kliknutím na ikonu mikrofonu <img src="public/Images/microphone-icon.png"/> umístěnou napravo od přehrávací části.
+            </p>
+            <p class="modal-text" data-i18n="app.modal.acoustic_intro">
+                Akustické prostředí lze měnit prostřednictvím ikony prostoru <img src="public/Images/space-icon.png"/> umístěné nalevo od přehrávací sekce. K dispozici jsou čtyři typy prostorů:
+            </p>
+            <ul class="modal-text">
+                <li>
+                  <img src="public/Images/studio-icon.png" alt="Studio">
+                  <span data-i18n="app.modal.acoustic_list.studio">
+                    <strong>studio</strong>
+                  </span>
+                </li>
+                <li>
+                  <img src="public/Images/concert_hall-icon.png" alt="Concert Hall">
+                  <span data-i18n="app.modal.acoustic_list.concert_hall">
+                    <strong>koncertní sál</strong>
+                  </span>
+                </li>
+                <li>
+                  <img src="public/Images/anechoic_chamber-icon.png" alt="Anechoic Chamber">
+                  <span data-i18n="app.modal.acoustic_list.anechoic_chamber">
+                    <strong>mrtvá komora</strong>
+                  </span>
+                </li>
+                <li>
+                  <img src="public/Images/church-icon.png" alt="Church">
+                  <span data-i18n="app.modal.acoustic_list.church">
+                    <strong>kostel</strong>
+                  </span>
+                </li>
+              </ul>
+              <p class="modal-text">
+                <span data-i18n="app.modal.playback.part1">
+                  Přehrávání zvukových ukázek je možné ovládat pomocí ikon
+                </span>
+                    <strong>play</strong>
+                <img src="public/Images/play-icon.png" alt="Play">
+                <span>
+                    <strong>stop</strong>
+                </span>
+                <img src="public/Images/stop-icon.png" alt="Stop">
+                <span>
+                    <strong>pause</strong>
+                </span>
+                <img src="public/Images/pause-icon.png" alt="Pause">
+                <span>
+                    <strong>loop</strong>
+                </span>
+                <img src="public/Images/loop-icon.png" alt="Loop">
+                <span data-i18n="app.modal.playback.part2">
+                    Funkce smyčky umožňuje vymezení úseku, jehož délku lze upravit tažením hranic. Smyčku lze deaktivovat opětovným kliknutím.
+                </span>
+              </p>
+            <p class="modal-text" data-i18n="app.modal.waveform">
+                Pro lepší orientaci je k dispozici vizualizace časového průběhu audio signálu ve formě vlnové křivky. Aktuálně zvolený prostor je zvýrazněn oranžovým okrajem. Kliknutím na waveformu lze přeskakovat.
+            </p>
+            <button class="close-button" onclick="closeModal()" data-i18n="app.modal.close_button">Zavřít</button>
+        </div>
+    </div>
+
+    <div class="settings-container">
+        <!-- Všechny boxy na stejné úrovni -->
+        <div class="settings-row">
+            <div class="setting-box">
+                <label for="instrumentSelect" data-i18n="app.settings.instrument_label">Hudební nástroj:</label>
+                <select id="instrumentSelect">
+                    <!-- Názvy některých nástrojů lze ponechat beze změny, u těch, kde chcete překlad, přidáme data-i18n -->
+                    <option value="violoncello" data-i18n="app.settings.instrument_violoncello">Violoncello</option>
+                    <option value="violin" data-i18n="app.settings.instrument_violin">Housle</option>
+                    <option value="clarinet" data-i18n="app.settings.instrument_clarinet">Klarinet</option>
+                    <option value="snare" data-i18n="app.settings.instrument_snare">Snare</option>
+                    <option value="voice" data-i18n="app.settings.instrument_voice">Lidský hlas</option>
+                    <option value="test" data-i18n="app.settings.instrument_test">Testovací signály</option>
+                </select>
+            </div>
+    
+            <div class="setting-box">
+                <label for="techniqueSelect" data-i18n="app.settings.technique_label">Technika hry:</label>
+                <select id="techniqueSelect">
+                    <!-- Případně zde budou dynamicky doplněny volby -->
+                </select>
+            </div>
+            <button id="applySettings" data-i18n="app.settings.apply_button">Použít nastavení</button>
+        </div>
+    </div>
+
+    <!-- Slider -->
+    <div class="slider-container">
+        <div class="svg-container"></div>
+        <input type="range" id="distanceSlider" min="0" max="3" step="0.1" value="1">
+    </div>   
+    
+
+
+    <div id="waveform-container">
+        <div id="waveform-studio" class="waveform"></div>
+        <div id="waveform-concert_hall" class="waveform"></div>
+        <div id="waveform-anechoic_chamber" class="waveform"></div>
+        <div id="waveform-church" class="waveform"></div>  
+    </div>
+
+    <div class="audio-container">
+
+        <!-- Dolní část rozdělená na 3 části -->
+        <div id="bottom-container">
+            <!-- Levá část -->
+            <div id="bottom-left-container">
+                <div id="space-selector" class="collapsed">
+                    <div class="space-options" id="spaceSelect">
+                        <img src="public/Images/studio-icon.png" alt="Studio" data-value="studio">
+                        <img src="public/Images/concert_hall-icon.png" alt="Concert Hall" data-value="concert_hall">
+                        <img src="public/Images/anechoic_chamber-icon.png" alt="Anechoic Chamber" data-value="anechoic_chamber">
+                        <img src="public/Images/church-icon.png" alt="Church" data-value="church">
+                    </div>
+                    <button id="collapseButtonLeft" class="collapse-space">
+                        <img src="public/Images/space-icon.png" alt="Collapse/Expand"/>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Prostřední část -->
+            <div id="controls-container">
+                <div id="controls">
+                    <button id="play">
+                        <img src="public/Images/play-icon.png" alt="Play">
+                    </button>
+                    <button id="stop">
+                        <img src="public/Images/stop-icon.png" alt="Stop">
+                    </button>
+                    <button id="pause">
+                        <img src="public/Images/pause-icon.png" alt="Pause">
+                    </button>
+                    <button id="toggleLoop" class="loop-inactive">
+                        <img src="public/Images/loop-icon.png" alt="Loop">
+                    </button>
+                </div>
+            </div>
+
+            <!-- Pravá část -->
+            <div id="bottom-right-container">
+                <div id="pattern-selector" class="collapsed">
+                    <button id="collapseButtonRight" class="collapse-mic">
+                        <img src="public/Images/microphone-icon.png" alt="Collapse/Expand"/>
+                    </button>
+                    <div class="pattern-options" id="patternSelect">
+                        <img src="public/Images/Directivity_patterns/omni.png" alt="Koule" data-value="omni">
+                        <img src="public/Images/Directivity_patterns/wide_cardio.png" alt="Široká ledvina" data-value="wide_cardioid">
+                        <img src="public/Images/Directivity_patterns/cardio.png" alt="Ledvina" data-value="cardioid">
+                        <img src="public/Images/Directivity_patterns/super_cardio.png" alt="Superkardioida" data-value="super_cardioid">
+                        <img src="public/Images/Directivity_patterns/figure_8.png" alt="Osmička" data-value="figure_8">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <a data-i18n="back_to_home" href="index.html" class="cta-btn">Zpět na hlavní stránku</a>
+
+    <footer>
+        <p data-i18n="footer">2025 Studijní aplikace RaDIM</p>
+        <p>Juraj Mišejka</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/wavesurfer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/wavesurfer.js@7/dist/plugins/regions.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next/23.7.3/i18next.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next-http-backend/2.2.0/i18nextHttpBackend.min.js"></script>
+
+    <script type="module" src="src/script_app.js"></script>
+    <script type="module" src="src/main.js"></script>
+
+</body>
+</html>

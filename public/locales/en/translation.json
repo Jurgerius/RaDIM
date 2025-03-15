@@ -1,0 +1,182 @@
+{
+  "nav": {
+    "app": "APP",
+    "about": "ABOUT THE PROJECT",
+    "test": "TEST"
+  },
+
+  "footer": "© 2025 Study App RaDIM",
+  "back_to_home": "Back to the main page",
+
+  "index": {
+    "welcome": "An interactive web application designed for students and professionals in the field of sound design, which enables a detailed examination of the impact of microphone distance, directional characteristics, and the acoustic environment on the final sound recording.",
+    "feedback": {
+      "button": "Feedback",
+      "title": "Feedback",
+      "description": "Thank you for your feedback. It helps me improve the application. Rating: 1 best, 5 worst",
+      "label_environment": "How does the application environment affect you?",
+      "placeholder_environment": "First impression, fluidity, design...",
+      "label_intuitive": "Is the application control intuitive?",
+      "placeholder_intuitive": "Control of distance, directional characteristics, and space. Playback, loop...",
+      "label_audio": "Are the audio samples sufficient for you?",
+      "placeholder_audio": "Musical instruments, selected spaces, distances...",
+      "label_missing_param": "Is there any sound or musical parameter missing in the examples?",
+      "placeholder_missing_param": "Dynamic and frequency range, sample length, musical examples...",
+      "label_change": "What would you change about the application?",
+      "placeholder_change": "Write what you would change...",
+      "label_missing": "What is missing in the application?",
+      "placeholder_missing": "Write what you would add...",
+      "label_rating": "Application rating:",
+      "label_additional": "Additional comments:",
+      "placeholder_additional": "Additional comments...",
+      "submit": "Submit feedback",
+      "confirmation": "Feedback saved!"
+    }
+  },
+
+  "app": {
+    "title": "Interactive Application",
+    "tooltip": "How to use the application",
+    "intro": "This page allows a detailed examination of microphone capture parameters, including the microphone’s position, its directional characteristics, and their impact on capturing the sound of various musical instruments and the human voice in four distinct acoustic environments. For more detailed information on how to operate the application, you can use the information icon located in the upper right corner.",
+    "modal": {
+      "header": "The user interface is divided into four main control sections:",
+      "sections": {
+         "section1": "<strong>Selection of the instrument and its playing technique</strong>",
+         "section2": "<strong>Setting the microphone distance from the sound source</strong>",
+         "section3": "<strong>Choice of acoustic environment and microphone directional pattern</strong>",
+         "section4": "<strong>Playback section</strong>"
+      },
+      "description": "Each instrument offers several techniques for playing its scale from the lowest possible tone. These techniques cover both a more percussive (e.g., staccato) and a smoother, legato style of playing. Additionally, one or two musical examples are available – typically one slower and one faster – allowing assessment of the instrument’s sound character in different contexts.",
+      "distance": "To simulate the microphone’s distance from the source, four fixed positions in <strong>one-meter steps</strong> are available. Exact distances and the microphone axis angle are described in the 'About the Project' section. The distance can be selected by dragging the directional pattern along the microphone axis.",
+      "directivity_intro": "Microphone directional patterns include standard configurations with defined ratios between the front and rear capsules:",
+      "directivity_list": {
+          "omni": "<strong>Omnidirectional</strong>: front = 0dB, rear = 0dB",
+          "wide_cardio": "<strong>Wide cardioid</strong>: front = 0dB, rear = -10dB",
+          "cardio": "<strong>Cardioid</strong>: front = 0dB, rear = -∞dB",
+          "super_cardio": "<strong>Supercardioid</strong>: front = 0dB, rear = -10dB + Ø",
+          "figure_8": "<strong>Figure 8</strong>: front = 0dB, rear = 0dB + Ø"
+      },
+      "mic_selection": "You can select a directional pattern by clicking the microphone icon.",
+      "acoustic_intro": "The acoustic environment can be changed using the space icon. Four types of spaces are available:",
+      "acoustic_list": {
+         "studio": "<strong>Studio</strong>",
+         "concert_hall": "<strong>Concert hall</strong>",
+         "anechoic_chamber": "<strong>Anechoic chamber</strong>",
+         "church": "<strong>Church</strong>"
+      },
+      "playback": {
+        "part1": "Sound playback can be controlled using the icons: ",
+        "part2": ". The loop function allows you to define a segment whose length can be adjusted by dragging its boundaries. Loop can be deactivated by clicking the loop button again."
+      },
+      "waveform": "For better orientation, a waveform visualization of the audio signal is provided. The currently selected space is highlighted with an orange border. Clicking on the waveform allows you to skip through playback.",
+      "close_button": "Close"
+    },
+    "settings": {
+      "instrument_label": "Musical instrument:",
+      "instrument_violoncello": "Violoncello",
+      "instrument_violin": "Violin",
+      "instrument_clarinet": "Clarinet",
+      "instrument_snare": "Snare",
+      "instrument_voice": "Human voice",
+      "instrument_test": "Test signals",
+      "technique_label": "Playing technique:",
+      "apply_button": "Apply settings"
+    }
+  },
+
+  "about": {
+    "project_heading": "About the Project",
+    "project_description": "This interactive web application was developed as part of a diploma thesis in Sound Design at HAMU in Prague. Its aim is to allow sound engineers and students to experiment with the effects that arise from using different microphone distances and directional characteristics when recording musical instruments and the human voice.",
+    "vision_heading": "Vision and Concept of the Application",
+    "vision_description": "The project was created to provide an interactive tool that demonstrates the impact of space, microphone distance, and directional characteristics. It was inspired by the lack of resources that allow comparing these parameters under real conditions. Thanks to the application, users can hear the sound changes caused by different microphone placements and selected directional patterns in various spaces.",
+    "audio_heading": "Audio Samples",
+    "audio_environments": "Recording was conducted in four acoustic environments that represent different conditions in which music is typically performed:",
+    "audio_environment": {
+      "concert_hall": "<strong>Concert Hall</strong> (Martinů Hall at HAMU) – represents a classic environment for chamber and orchestral music where the natural acoustics of the space are utilized.",
+      "studio": "<strong>Sound Studio</strong> (HAMU) – a space optimized for studio work, providing controlled acoustic conditions.",
+      "church": "<strong>Church</strong> (St. Voršila Church in Prague) – an example of a sacred space with a long reverberation time, typical for temple music.",
+      "anechoic_chamber": "<strong>Anechoic Chamber</strong> (MARC HAMU) – a space that completely eliminates reflections, allowing the pure sound signal to be perceived without the influence of room acoustics. It serves as an excellent reference point for understanding how reflections affect sound perception."
+    },
+    "instruments_description": "Musical instruments were selected to cover a wide range of instrument groups, with the choice also influenced by the availability of musicians and instruments:",
+    "instruments": {
+      "string": "String instruments: <strong>violin</strong>, <strong>violoncello</strong>",
+      "woodwind": "Woodwind instruments: <strong>clarinet</strong>",
+      "percussion": "Percussion instruments: <strong>snare drum</strong>",
+      "voice": "<strong>Human voice</strong>: spoken word, folk singing, opera singing"
+    },
+    "techniques_description": "The playing techniques were chosen to cover the widest possible spectrum of playing styles in moderate dynamics. For each instrument, both legato and staccato techniques were recorded. In addition to these basic examples, two musical passages are available for each instrument – one in a faster tempo and one in a slower tempo, both with variable dynamics. The snare drum is an exception, for which only one musical example is available, and for the human voice, three variants are provided: spoken word and two types of singing with different vocal techniques.",
+    "audio_recording_heading": "Recording of Audio Samples",
+    "audio_recording_description": "Recording was carried out using a system of multiple microphone distances (1 m, 2 m, 3 m, 4 m from the sound source) and using <strong>Sennheiser MKH 800 Twin</strong> microphones that allow changes in the directional characteristic during post-production.",
+    "microphone_distances": "The microphone distances were determined taking into account the dimensions of the anechoic chamber and were arranged along the instrument's main radiation axis in one-meter increments. This radiation axis was established based on the directional properties of the instrument and experience with its natural sound projection. The angle between the instrument's radiation axis and the floor was not identical for all instruments:",
+    "microphone_angle": {
+      "string": "Violoncello and violin – <strong>20°</strong>",
+      "woodwind": "Clarinet and snare drum – <strong>15°</strong>",
+      "voice": "Human voice – <strong>0°</strong> (parallel to the floor)"
+    },
+    "preamp_levels": "The levels of the microphone preamplifiers were set uniformly for each instrument and the human voice in different acoustic environments to maintain consistency during comparisons. However, the levels varied between instruments and the human voice to reflect differences in loudness and the dynamic properties of the sound sources.",
+    "microphone_direction_heading": "Principle of Microphone Directionality",
+    "microphone_direction_description": "The microphone's directional characteristic is simulated in the application based on the ratio of the amplification of signals from the front and rear microphone capsules. Each audio pair contains two signals corresponding to these capsules, and their ratio determines the resulting directional pattern.",
+    "microphone_direction": {
+      "koule": "<strong>Omnidirectional</strong> – the levels of both capsules are equal",
+      "wide_cardio": "<strong>Wide cardioid</strong> – the rear capsule level is 10 dB lower",
+      "cardio": "<strong>Cardioid</strong> – the rear capsule has zero level",
+      "super_cardio": "<strong>Supercardioid</strong> – the rear capsule level is 10 dB lower and its polarity is inverted relative to the front capsule",
+      "figure_8": "<strong>Figure 8</strong> – the levels of both capsules are equal, but the rear capsule has inverted polarity"
+    },
+    "microphone_direction_measurement": "These characteristics were measured by the manufacturer, and their graphs (directional and frequency response) are provided below:",
+    "audio_editing_heading": "Editing of Audio Samples",
+    "audio_editing_description": "The audio samples were subsequently post-produced through editing, so that recordings from different acoustic environments are as synchronized in tempo as possible. Despite using a visual metronome during recording, some passages had to be time-aligned to ensure more accurate comparisons, with an emphasis on ensuring that the edits were inaudible. Additionally, volume normalization was performed to avoid unwanted differences in signal levels between the samples.",
+    "audio_processing_heading": "Audio Processing in the Application",
+    "audio_processing_description1": "Audio is processed directly in the web browser in real time using the <strong>Web Audio API</strong>. Each audio file is loaded into an <strong>AudioBuffer</strong>, which allows flexible manipulation of the audio data. For playback, an <strong>AudioBufferSourceNode</strong> is used, which is connected to other audio nodes, primarily a <strong>GainNode</strong> that controls the volume of individual tracks.",
+    "audio_processing_description2": "All audio files are loaded simultaneously when the instrument and playing technique are selected. The audio system is based on the concept of so-called <strong>audio pairs</strong> – pairs of audio files corresponding to the front and rear microphone capsules at a specific distance from the sound source.",
+    "microphone_control_heading": "Control of Microphone Distance",
+    "microphone_control_description": "Each available microphone distance has its own audio pair, with all pairs playing simultaneously after loading. However, only the pair corresponding to the currently selected distance is audible, while the other audio pairs remain muted.",
+    "microphone_control_crossfade": "Switching between distances occurs abruptly; however, to eliminate artifacts and unwanted transitional sounds (e.g., clicks), a linear crossfade is implemented between the respective audio pairs with a duration of <strong>50 ms</strong>. This short transition smoothly adjusts the volume levels between adjacent audio pairs, ensuring a natural listening experience even when switching rapidly between distances.",
+    "direction_control_heading": "Control of Directional Characteristic",
+    "direction_control_description": "The microphone's directional characteristic is simulated in the application based on the ratio of the amplification of signals from the front and rear capsules. Each audio pair contains two signals corresponding to these capsules, and their relative level ratio determines the resulting directional characteristic.",
+    "direction_control_consistency": "This setting is applied uniformly to all audio pairs simultaneously, which means that when the distance is changed, the directional characteristic remains consistent.",
+    "acoustic_control_heading": "Control of the Acoustic Environment",
+    "acoustic_control_description": "The user can smoothly switch between different acoustic environments (anechoic chamber, concert hall, sound studio, church). All corresponding audio files for the current instrument, playing technique, and all distances are loaded simultaneously, allowing an immediate change of the acoustic environment without interrupting playback.",
+    "similar_apps_heading": "Similar Applications",
+    "similar_apps": "<a href=\"http://soundmedia.jp/nuaudk/\">Comparison of various microphone positions for orchestral instruments</a><br><a href=\"https://ciechanow.ski/sound/\">Interactive educational application about sound</a><br><a href=\"https://www.stefan-kiessling.com/index.php?Thema=recordingmenu&lang=en\">Various microphone setups</a>",
+    "contact_heading": "Contact"
+  },
+  "test": {
+    "page_title": "RaDIM – Test",
+    "heading": "Listening AB Test",
+    "description": "On this page, you can test your listening skills. Choose a musical instrument, a playing technique, and a parameter you want to guess. Then, simply select which of the other values should be the same for samples A and B. Once you are satisfied with your guess, you can view the solution.",
+    "guess_label": "What do I want to guess:",
+    "guess_distance": "Distance",
+    "guess_pattern": "Directional Pattern",
+    "guess_space": "Space",
+    "fixed_distance_label": "Distance:",
+    "fixed_pattern_label": "Directional Pattern:",
+    "fixed_pattern_options": {
+      "omni": "Omni",
+      "cardioid": "Cardioid",
+      "wide_cardioid": "Widecardioid",
+      "supercardioid": "Supercardioid",
+      "figure_8": "Figure 8"
+    },
+    "fixed_space_label": "Space:",
+    "fixed_space_options": {
+      "studio": "Studio",
+      "church": "Church",
+      "anechoic_chamber": "Anechoic Chamber",
+      "concert_hall": "Concert Hall"
+    },
+    "confirm_button": "Confirm Settings",
+    "box_A": "A",
+    "box_B": "B",
+    "show_results": "Show Results",
+    "results": {
+      "parameter": {
+        "distance": "Distance",
+        "pattern": "Directional Pattern",
+        "space": "Space"
+      },
+      "label_audioA": "{{parameter}} for Audio A:",
+      "label_audioB": "{{parameter}} for Audio B:"
+    }
+  }
+}

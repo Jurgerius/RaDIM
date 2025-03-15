@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RaDIM</title>
+    <link rel="stylesheet" href="public/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet'>
+    <link rel="icon" href="public/Images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <div class="logo-left">
+            <a href="index.html">
+                <img src="public/Images/logo_aplikace.png" alt="Logo" class="logo-image">  <!-- Levé logo -->
+            </a>
+            <span class="logo-text">RaDIM</span> <!-- Text vedle loga vlevo -->
+        </div>
+
+        <nav class="nav-container">
+            <div class="nav-links">
+                <a href="app.html" data-i18n="nav.app">APLIKACE</a>
+                <a href="about.html" data-i18n="nav.about">O PROJEKTU</a>
+                <a href="test.html" data-i18n="nav.test">TEST</a>
+
+                <div class="language-buttons">
+                    <button id="btn-cs">🇨🇿</button>
+                    <button id="btn-en">🇬🇧</button>
+                    <button id="btn-de">🇩🇪</button>
+                </div>
+            </div>
+
+            <!-- Hamburger ikonka, viditelná jen v malém rozlišení -->
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>    
+
+    <section id="hero">
+        <div class="animated-logo">
+            <span class="word" id="word1">Room acoustics</span>
+            <span class="word" id="word2">Distance</span>
+            <span class="word" id="word3">Instrument</span>
+            <span class="word" id="word4">Microphone</span>
+        </div>
+        <p class="hero-text1">
+            Room acoustics - Distance - Instrument - Microphone
+        </p>
+        <p data-i18n="index.welcome" class="hero-text2">
+            Interaktivní webová aplikace určená pro studenty a profesionály v oblasti zvukové tvorby, která umožňuje detailní zkoumání vlivu vzdálenosti mikrofonu, směrové charakteristiky a akustického prostředí na výsledný zvukový záznam.
+        </p>
+    </section>   
+
+    <footer>
+        <!-- Feedback container -->
+        <button id="feedback-button" data-i18n="index.feedback.button">Feedback</button>
+        <div id="feedback-container" class="feedback-container">
+        <form id="feedback-form" class="feedback-form" action="/submit_feedback" method="POST">
+            <div class="feedback-header">
+            <h2 data-i18n="index.feedback.title">Zpětná vazba</h2>
+            <p data-i18n="index.feedback.description">
+                Díky za Vaši zpětnou vazbu. Díky ní dokážu aplikaci vylepšit. Hodnocení: 1 nejlepší, 5 nejhorší
+            </p>
+            </div>
+            
+            <label for="environment_comment" data-i18n="index.feedback.label_environment">
+            Jak na Vás působí prostředí aplikace?
+            </label>
+            <div class="rating-scale">
+                <div class="rating-options">
+                    <input type="radio" id="env1" name="environment_rating" value="1"><label for="env1">1</label>
+                    <input type="radio" id="env2" name="environment_rating" value="2"><label for="env2">2</label>
+                    <input type="radio" id="env3" name="environment_rating" value="3"><label for="env3">3</label>
+                    <input type="radio" id="env4" name="environment_rating" value="4"><label for="env4">4</label>
+                    <input type="radio" id="env5" name="environment_rating" value="5"><label for="env5">5</label>
+                </div>
+            </div>
+            <textarea id="environment_comment" name="environment_comment" rows="4"
+            placeholder="První dojem, plynulost, design..."
+            data-i18n-placeholder="index.feedback.placeholder_environment"></textarea>
+
+
+
+            <label for="intuitive_comment" data-i18n="index.feedback.label_intuitive">
+            Je ovládání aplikace intuitivní?
+            </label>
+            <div class="rating-scale">
+                <div class="rating-options">
+                    <input type="radio" id="int1" name="intuitive_rating" value="1"><label for="int1">1</label>
+                    <input type="radio" id="int2" name="intuitive_rating" value="2"><label for="int2">2</label>
+                    <input type="radio" id="int3" name="intuitive_rating" value="3"><label for="int3">3</label>
+                    <input type="radio" id="int4" name="intuitive_rating" value="4"><label for="int4">4</label>
+                    <input type="radio" id="int5" name="intuitive_rating" value="5"><label for="int5">5</label>
+                </div>
+            </div>
+            <textarea id="intuitive_comment" name="intuitive_comment" rows="4"
+            placeholder="Ovládání vzdálenosti, směrové charakteristiky a prostoru. Přehrávání, loop..."
+            data-i18n-placeholder="index.feedback.placeholder_intuitive"></textarea>
+
+
+
+            <label for="audio_comment" data-i18n="index.feedback.label_audio">
+            Jsou pro Vás audio vzorky dostačující?
+            </label>
+            <div class="rating-scale">
+                <div class="rating-options">
+                    <input type="radio" id="audio1" name="audio_rating" value="1"><label for="audio1">1</label>
+                    <input type="radio" id="audio2" name="audio_rating" value="2"><label for="audio2">2</label>
+                    <input type="radio" id="audio3" name="audio_rating" value="3"><label for="audio3">3</label>
+                    <input type="radio" id="audio4" name="audio_rating" value="4"><label for="audio4">4</label>
+                    <input type="radio" id="audio5" name="audio_rating" value="5"><label for="audio5">5</label>
+                </div>
+            </div>
+            <textarea id="audio_comment" name="audio_comment" rows="4"
+            placeholder="Hudební nástroje, zvolené prostory, vzdálenosti..."
+            data-i18n-placeholder="index.feedback.placeholder_audio"></textarea>
+
+
+
+            <label for="likes" data-i18n="index.feedback.label_missing_param">
+            Je nějaký zvukový nebo hudební parametr, který Vám v ukázkách chybí?
+            </label>
+            <textarea id="likes" name="likes" rows="4"
+            placeholder="Dynamický a frekvenční rozsah, délka vzorků, hudební ukázky..."
+            data-i18n-placeholder="index.feedback.placeholder_missing_param"></textarea>
+            
+
+
+            <label for="dislikes" data-i18n="index.feedback.label_change">
+            Co byste na aplikaci změnili?
+            </label>
+            <textarea id="dislikes" name="dislikes" rows="4"
+            placeholder="Napište, co byste změnili..."
+            data-i18n-placeholder="index.feedback.placeholder_change"></textarea>
+            
+
+
+            <label for="missing" data-i18n="index.feedback.label_missing">
+            Co vám v aplikaci chybí?
+            </label>
+            <textarea id="missing" name="missing" rows="4"
+            placeholder="Napište, co byste přidali..."
+            data-i18n-placeholder="index.feedback.placeholder_missing"></textarea>
+
+
+            
+            <label data-i18n="index.feedback.label_rating">Hodnocení aplikace:</label>
+            <div class="rating">
+            <input type="radio" id="star5" name="rating" value="5">
+            <label for="star5">☆</label>
+            <input type="radio" id="star4" name="rating" value="4">
+            <label for="star4">☆</label>
+            <input type="radio" id="star3" name="rating" value="3">
+            <label for="star3">☆</label>
+            <input type="radio" id="star2" name="rating" value="2">
+            <label for="star2">☆</label>
+            <input type="radio" id="star1" name="rating" value="1">
+            <label for="star1">☆</label>
+            </div>
+            
+            <label for="additional" data-i18n="index.feedback.label_additional">
+            Další připomínky:
+            </label>
+            <textarea id="additional" name="additional" rows="3"
+            placeholder="Další komentáře..."
+            data-i18n-placeholder="index.feedback.placeholder_additional"></textarea>
+            
+            <input type="submit" value="Odeslat zpětnou vazbu"
+            data-i18n-value="index.feedback.submit">
+            
+            <!-- Kontejner pro potvrzovací zprávu -->
+            <div id="feedback-message" class="hidden" data-i18n="index.feedback.confirmation">
+            Zpětná vazba uložena!
+            </div>
+        </form>
+        </div>
+        <p data-i18n="footer">2025 Studijní aplikace RaDIM</p>
+        <p>Juraj Mišejka</p>
+    </footer>
+
+    <script>
+        // Script pro logo na hlavní stránce
+        const words = document.querySelectorAll(".animated-logo .word");
+        let currentIndex = 0;
+
+        function animateWords() {
+            if (currentIndex < words.length) {
+                words[currentIndex].classList.add("active"); // Aktivuje animaci pro aktuální slovo
+                currentIndex++;
+                setTimeout(animateWords, 500); // Čas mezi jednotlivými slovy
+            } else {
+                // Po dokončení zobrazení všech slov zvýrazníme první písmena
+                highlightInitials();
+            }
+        }
+
+        function highlightInitials() {
+            words.forEach((word) => {
+                const text = word.textContent;
+                const parts = text.split(" ");
+                const highlightedParts = parts.map(part => {
+                    return `<span class="highlight">${part.charAt(0)}</span><span class="fade">${part.slice(1)}</span>`;
+                });
+                word.innerHTML = highlightedParts.join(" ");
+            });
+
+            // Po malé pauze spustíme "zvýraznění"
+            setTimeout(() => {
+                // 1) Zvýrazníme první písmena
+                document.querySelectorAll(".highlight").forEach(letter => {
+                    letter.classList.add("show");
+                });
+                // 2) Ostatní písmena vyblednou (opacity: 0, width: 0)
+                document.querySelectorAll(".fade").forEach(fadedLetter => {
+                    fadedLetter.classList.add("dim");
+                });
+
+                // Po 1s vyblednutí...
+                setTimeout(() => {
+
+                    // 1) Sebereme všechna highlight písmena a dočasně vypneme transition
+                    const highlightLetters = Array.from(document.querySelectorAll(".highlight"));
+                    highlightLetters.forEach(letter => {
+                        // Vypneme pro jistotu animace
+                        letter.style.transition = "none";
+                    });
+
+                    // 2) Změříme staré (F) polohy
+                    const firstPositions = highlightLetters.map(letter => {
+                        const rect = letter.getBoundingClientRect();
+                        return {
+                            letter,
+                            top: rect.top,
+                            left: rect.left
+                        };
+                    });
+
+                    // 3) Odstraníme .fade z DOM
+                    document.querySelectorAll(".fade.dim").forEach(fadedLetter => {
+                        fadedLetter.remove();
+                    });
+
+                    // 4) Změříme nové (L) polohy
+                    const lastPositions = highlightLetters.map(letter => {
+                        const rect = letter.getBoundingClientRect();
+                        return {
+                            letter,
+                            top: rect.top,
+                            left: rect.left
+                        };
+                    });
+
+                    // 5) [I] Invert: nastavíme transform, aby se tvářily, že zůstaly v původní poloze
+                    highlightLetters.forEach((_, i) => {
+                        const dx = firstPositions[i].left - lastPositions[i].left;
+                        const dy = firstPositions[i].top - lastPositions[i].top;
+                        highlightLetters[i].style.transform = `translate(${dx}px, ${dy}px)`;
+                    });
+
+                    // 6) Vynutíme reflow, aby se prohlížeč vykreslil s tímto `transform: translate(...)`
+                    highlightLetters.forEach(letter => {
+                        
+                    });
+
+                    // 7) V dalším frame teprve pustíme animaci do nové polohy (Play)
+                    requestAnimationFrame(() => {
+                        highlightLetters.forEach(letter => {
+                            // Teď už zapneme transition
+                            letter.style.transition = "transform 0.8s ease";
+                            // Plynulý přesun do translate(0,0)
+                            letter.style.transform = "translate(0,0)";
+                        });
+                    });
+
+                    // Například na úplném konci highlightInitials()
+                    setTimeout(() => {
+                        // Přidat třídu .show na odstavec
+                        const paramText = document.querySelector(".hero-text1");
+                        paramText.classList.add("show");
+                        // Druhý řádek o 1 vteřinu později
+                        setTimeout(() => {
+                            document.querySelectorAll(".hero-text2").forEach(element => {
+                            element.classList.add("show");
+                            });
+                        }, 1000);
+                    }, 1000);
+                }, 1000); 
+            }, 1000);
+        }
+
+        // Spustí animaci po načtení stránky
+        window.onload = () => {
+            animateWords();
+        };
+
+
+
+        // Script na feedback okno
+        document.getElementById("feedback-button").addEventListener("click", function() {
+            document.getElementById("feedback-container").classList.toggle("active");
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const feedbackForm = document.querySelector('.feedback-form');
+
+            if (feedbackForm) {
+                feedbackForm.addEventListener('submit', function (event) {
+                    event.preventDefault();
+
+                    const formData = new FormData(feedbackForm);
+
+                    // 📌 SPRÁVNÉ Google Forms URL (převod na formResponse)
+                    const googleFormURL = "https://docs.google.com/forms/d/e/1FAIpQLScayiHvKoh7I30HwQMyaD9VR-TNv4suTJT-M43wHCem_T0pOQ/formResponse";
+
+                    // 📌 Správné entry ID podle console logu z Forms
+                    const formEntries = new URLSearchParams();
+                    formEntries.append("entry.1223161553", formData.get("environment_comment")); 
+                    formEntries.append("entry.1686892940", formData.get("intuitive_comment"));
+                    formEntries.append("entry.1804598012", formData.get("audio_comment"));
+                    formEntries.append("entry.2016282161", formData.get("likes")); 
+                    formEntries.append("entry.1677924439", formData.get("dislikes"));
+                    formEntries.append("entry.503162501", formData.get("missing")); 
+                    formEntries.append("entry.1847528374", formData.get("additional")); 
+                    formEntries.append("entry.1384975669", formData.get("environment_rating"));  
+                    formEntries.append("entry.639190130", formData.get("intuitive_rating"));  
+                    formEntries.append("entry.169762161", formData.get("audio_rating"));  
+                    formEntries.append("entry.1220857185", formData.get("rating"));  
+
+                    // 📌 Přidání nutných hidden hodnot pro Google Forms
+                    formEntries.append("fvv", "1");  
+                    formEntries.append("partialResponse", "[null,null,\"-4251843240326713782\"]");
+                    formEntries.append("pageHistory", "0");
+                    formEntries.append("fbzx", "-4251843240326713782");
+
+                    fetch(googleFormURL, {
+                        method: "POST",
+                        mode: "no-cors",
+                        body: formEntries,
+                    })
+                    .then(() => {
+                        console.log("✅ Odesláno do Google Forms!");
+                        alert("Děkujeme za zpětnou vazbu! 😊");
+                        feedbackForm.reset();
+                    })
+                    .catch(error => {
+                        console.error("❌ Chyba při odesílání:", error);
+                        alert("Chyba při odesílání zpětné vazby! 😢");
+                    });
+                });
+            }
+        });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next/23.7.3/i18next.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next-http-backend/2.2.0/i18nextHttpBackend.min.js"></script>
+
+    <script type="module" src="src/main.js"></script>
+</body>
+</html>
