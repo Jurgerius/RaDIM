@@ -4,9 +4,9 @@
   "type": "module",
   "main": "server.js",
   "scripts": {
-    "dev": "vite",
-    "clean": "rm -rf dist",
-    "build": "npm run clean && vite build"
+    "build": "next build",
+    "start": "next start",
+    "dev": "next dev"
   },
   "keywords": [],
   "author": "",
