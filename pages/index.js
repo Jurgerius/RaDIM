@@ -1,12 +1,9 @@
-import Head from 'next/head';
+import { useEffect } from "react";
 
 export default function Home() {
-  return (
-    <>
-      <Head>
-        <title>RaDIM</title>
-      </Head>
-      <iframe src="/index.html" width="100%" height="100vh" style={{ border: "none" }}></iframe>
-    </>
-  );
+  useEffect(() => {
+    window.location.href = "/index.html"; // Přesměrování na původní HTML
+  }, []);
+
+  return <p>Přesměrování...</p>;
 }

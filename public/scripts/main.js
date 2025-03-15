@@ -21,7 +21,7 @@ i18next
       escapeValue: false
     },
     backend: {
-      loadPath: 'public/locales/{{lng}}/translation.json',
+      loadPath: '/locales/{{lng}}/translation.json',
     }
   }, function(err, t) {
     if (err) return console.error(err);

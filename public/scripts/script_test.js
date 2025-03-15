@@ -57,7 +57,7 @@ let conditionB = {};
 // ===== Funkce pro načítání dat prostorů =====
 async function fetchSpaces() {
   try {
-    const response = await fetch('/public/sources.json');
+    const response = await fetch('/sources.json');
     const data = await response.json();
     if (!data.spaces || !Array.isArray(data.spaces)) {
       throw new Error('Data spaces nejsou pole nebo nejsou definována.');
@@ -72,7 +72,7 @@ async function fetchSpaces() {
 // ===== Funkce pro generování cest k audio souborům =====
 function generateTestFilePaths(condition) {
   // Předpokládáme cestu: /AudioFiles/{space}-{instrument}-{technique}-{distance}{front/back}.wav
-  const basePath = 'public/AudioFiles/';
+  const basePath = 'https://pub-38ebab133d1e4632ae5219e6e0f6cdd0.r2.dev/';
   const distance = Number(condition.distance);
   // V testu potřebujeme pouze jednu dvojici souborů (front a back) pro zadanou vzdálenost
   const filePaths = [
@@ -354,7 +354,7 @@ function generateTestFilePaths(condition) {
       fallbackLng: 'en',
       debug: true,
       backend: {
-        loadPath: 'public/locales/{{lng}}/translation.json'
+        loadPath: '/locales/{{lng}}/translation.json'
       },
       interpolation: {
         escapeValue: false

@@ -8,15 +8,12 @@ const patterns = {
 };
 
 const svgPaths = {
-    clarinet: 'public/svg/clar_setup.svg',
-    violin: 'public/svg/violin_setup.svg',
-    violoncello: 'public/svg/vcl_setup.svg',
-    snare: 'public/svg/snare_setup.svg',
-    voice: 'public/svg/voc_setup.svg'
+    clarinet: '/svg/clar_setup.svg',
+    violin: '/svg/violin_setup.svg',
+    violoncello: '/svg/vcl_setup.svg',
+    snare: '/svg/snare_setup.svg',
+    voice: '/svg/voc_setup.svg'
 };
-
-const folderId = "1rsDZ5PIIlhNtxcEBFk71PBFoiLQIuFdm"; // Nahraď svým FOLDER_ID
-const apiKey = "AIzaSyCfAiCPWl217AkpMmufA0ggj7BsMCuUIFw"; // Nahraď svým Google API klíčem
 
 const waveSurferInstances = {}; // Každý prostor bude mít svou instanci
 
@@ -26,7 +23,8 @@ const RegionsPlugin = WaveSurfer.Regions;
 
 let audioPairs = []; 
 let audioContext = new (window.AudioContext || window.webkitAudioContext)();
-let audioBuffers = [];  
+let audioBuffers = [];  // Pole dekódovaných audií
+let sources = [];       // Pole AudioBufferSourceNode
 let audioSources = [];  
 let gainNodes = [];
 
@@ -52,11 +50,12 @@ let startTime = 0;
 let pausedTime = 0;
 let lastCursorTime = 0; // Globální proměnná pro sledování aktuálního času přehrávání
 
-/*
+
+
 // Načtení JSON souboru pro načtení Audio Files
 async function fetchSpaces() {
     try {
-        const response = await fetch('/RaDIM/public/sources.json'); // Cesta k JSON souboru
+        const response = await fetch('/sources.json'); // Cesta k JSON souboru
         const data = await response.json();
         logDebug('Načtená data prostorů:', data);
 
@@ -96,13 +95,13 @@ function generateFilePaths(spaces, instrument, technique) {
         return [];
     }
 
-    const basePath = 'https://jurgerius.github.io/RaDIM/public/AudioFiles/';
+    const basePath = 'https://pub-38ebab133d1e4632ae5219e6e0f6cdd0.r2.dev/';
     const filePaths = spaces.flatMap(space =>
         Array.from({ length: 4 }, (_, i) => {
             const index = i + 1;
             return [
-                `${basePath}${space.name}-${instrument}-${technique}-${index}front.wav`,
-                `${basePath}${space.name}-${instrument}-${technique}-${index}back.wav`
+                `${basePath}${space.name}-${instrument}-${technique}-${index}front.flac`,
+                `${basePath}${space.name}-${instrument}-${technique}-${index}back.flac`
             ];
         }).flat()
     );
@@ -111,90 +110,19 @@ function generateFilePaths(spaces, instrument, technique) {
     return filePaths;
 }
 
-*/
-
-async function fetchAudioFilesFromDrive(folderId, apiKey) {
-    const url = `https://www.googleapis.com/drive/v3/files?q='${folderId}'+in+parents&key=${apiKey}&fields=files(id,name)`;
-    
-    console.log('🔍 [fetchAudioFilesFromDrive] Volám API:', url);
-    
-    try {
-        const response = await fetch(url);
-        console.log('📡 [fetchAudioFilesFromDrive] API Response Status:', response.status);
-        
-        if (!response.ok) {
-            throw new Error(`API chyba: ${response.status} - ${response.statusText}`);
-        }
-
-        const data = await response.json();
-        console.log('📂 [fetchAudioFilesFromDrive] API odpověď:', JSON.stringify(data, null, 2));
-
-        if (!data.files || !Array.isArray(data.files) || data.files.length === 0) {
-            console.warn('⚠️ [fetchAudioFilesFromDrive] Žádné soubory nebyly nalezeny.');
-            return {}; 
-        }
-
-        const audioFiles = Object.fromEntries(
-            data.files.map(file => [file.name, `https://drive.google.com/uc?export=download&id=${file.id}`])
-        );
-
-        console.log('✅ [fetchAudioFilesFromDrive] Načtené audio soubory:', audioFiles);
-        return audioFiles;
-    } catch (error) {
-        console.error('❌ [fetchAudioFilesFromDrive] Chyba při načítání souborů z Google Drive:', error.message);
-        return {}; 
-    }
-}
-
-async function generateFilePaths(spaceMapping, instrument, technique) {
-    console.log('🔄 [generateFilePaths] Generuji cesty k souborům...', { spaceMapping, instrument, technique });
-
-    if (!spaceMapping || typeof spaceMapping !== 'object' || Object.keys(spaceMapping).length === 0) {
-        console.error('❌ [generateFilePaths] Chyba: spaceMapping je neplatný nebo prázdný.');
-        return [];
-    }
-
-    if (!instrument || !technique) {
-        console.error('❌ [generateFilePaths] Chyba: Instrument nebo technika není definována.');
-        return [];
-    }
-
-    try {
-        const audioFiles = await fetchAudioFilesFromDrive(folderId, apiKey);
-        
-        if (!audioFiles || Object.keys(audioFiles).length === 0) {
-            console.warn('⚠️ [generateFilePaths] Žádné soubory nebyly nalezeny v Google Drive.');
-            return [];
-        }
-
-        const filePaths = Object.entries(audioFiles)
-            .filter(([fileName]) => fileName.includes(instrument) && fileName.includes(technique))
-            .map(([_, url]) => url);
-
-        if (filePaths.length === 0) {
-            console.warn(`⚠️ [generateFilePaths] Nebyly nalezeny soubory pro "${instrument}" a "${technique}".`);
-        }
-
-        console.log('✅ [generateFilePaths] Generované cesty k souborům:', filePaths);
-        return filePaths;
-    } catch (error) {
-        console.error('❌ [generateFilePaths] Chyba při generování cest k souborům:', error.message);
-        return [];
-    }
-}
-
 /* ======================================
    Funkce pro načtení/aktualizaci dat
 ====================================== */
 
 async function applyInstrumentAndTechniqueSettings(instrument, technique) {
-    logDebug('🎵 Aplikuji nastavení nástroje a techniky...');
+    logDebug('Aplikuji nastavení nástroje a techniky...');
 
     const selectedInstrument = instrument || document.getElementById('instrumentSelect')?.value || 'violoncello';
     const selectedTechnique = technique || document.getElementById('techniqueSelect')?.value || 'detache';
 
+
     if (!selectedInstrument || !selectedTechnique) {
-        console.error('❌ Nástroj nebo technika nebyla vybrána.');
+        console.error('Nástroj nebo technika nebyla vybrána.');
         return;
     }
 
@@ -202,38 +130,41 @@ async function applyInstrumentAndTechniqueSettings(instrument, technique) {
     currentTechnique = selectedTechnique;
 
     try {
-        const audioFiles = await fetchAudioFilesFromDrive(folderId, apiKey);
-        
-        if (!audioFiles || Object.keys(audioFiles).length === 0) {
-            throw new Error('❌ Nebyla nalezena žádná data prostorů.');
+        const spaces = await fetchSpaces();
+        if (!Array.isArray(spaces) || spaces.length === 0) {
+            console.error('Nebyla nalezena žádná data prostorů:', spaces);
+            return;
         }
-
-        // **Vytvoření spaceMapping**
-        const spaces = Object.keys(audioFiles).map(fileName => {
-            const parts = fileName.split('-'); // Rozdělení názvu souboru podle "-"
-            return parts.length > 0 ? parts[0] : null; // První část názvu je prostor
-        }).filter(Boolean); // Odstraníme null hodnoty
-
-        spaceMapping = [...new Set(spaces)]; // Unikátní hodnoty
-
-        console.log('✅ Aktualizovaný spaceMapping:', spaceMapping);
 
         // Reset dat a načtení audio souborů
         resetAudioData();
-        audioPairs = await generateFilePaths(spaceMapping, selectedInstrument, selectedTechnique);
+        audioPairs = generateFilePaths(spaces, selectedInstrument, selectedTechnique);
 
         await loadAudioFiles();
-        logDebug('✅ Všechna audio soubory byla úspěšně načtena.');
+        logDebug('Všechna audio soubory byla úspěšně načtena.');
 
-        if (spaceMapping.length > 0 && audioPairs.length > 0) {
-            initializeWaveformsForSpaces(spaceMapping, audioPairs);
+        if (spaces && audioPairs.length > 0) {
+            initializeWaveformsForSpaces(spaces, audioPairs);
         } else {
-            console.error('❌ Žádné prostory nebo audio soubory nejsou k dispozici pro inicializaci waveform.');
+            console.error('Žádné prostory nebo audio soubory nejsou k dispozici pro inicializaci waveform.');
         }
 
     } catch (error) {
-        console.error('❌ Chyba při načítání dat prostorů nebo souborů:', error);
+        console.error('Chyba při načítání dat prostorů nebo souborů:', error);
     }
+
+    const svgUrl = svgPaths[currentInstrument];
+    if (svgUrl) {
+        loadSvgFile(svgUrl, () => {
+            logDebug(`Načteno SVG: ${svgUrl}`);
+            positionSlider(); 
+        });
+    } else {
+        console.warn('Nebyla nalezena odpovídající cesta pro SVG:', currentInstrument);
+    }
+
+
+    logDebug('Aktuální audioPairs:', audioPairs);
 }
 
 // Aplikovat směrovou charakteristiku
@@ -279,41 +210,56 @@ function selectSpace(selectedSpace) {
 async function loadAudioFiles() {
     console.log('[loadAudioFiles] Načítám audio soubory...');
 
+    // Pokud už probíhá načítání nebo jsou soubory načtené, vrátíme se
     if (isLoading || isLoaded) return Promise.resolve();
 
-    showSpinner();
+    showSpinner(); // Zobrazíme indikátor načítání
     isLoading = true;
-    audioBuffers = [];
+    audioBuffers = []; // Resetujeme pole bufferů
 
+    // Ověření, že máme co načíst
     if (!audioPairs.length) {
         console.error('[loadAudioFiles] Žádné audio soubory nejsou k dispozici.');
         isLoading = false;
+        hideSpinner();
         return Promise.reject('Žádné soubory.');
     }
 
+    console.log(`[loadAudioFiles] Počet souborů k načtení: ${audioPairs.length}`);
+
+    // **Stáhneme a dekódujeme všechna audia PŘEDEM**
     const fetchPromises = audioPairs.map(async (file, index) => {
         try {
+            console.log(`[loadAudioFiles] 🔄 Stahuji soubor: ${file}`);
+
             const response = await fetch(file);
             if (!response.ok) throw new Error(`Soubor nenalezen: ${file}`);
-            
+
             const arrayBuffer = await response.arrayBuffer();
             const decodedData = await audioContext.decodeAudioData(arrayBuffer);
-            audioBuffers[index] = decodedData;
-            logDebug(`[loadAudioFiles] Načteno: ${file}`);
+
+            audioBuffers[index] = decodedData; // Uložíme do pole bufferů
+            console.log(`[loadAudioFiles] ✅ Načteno: ${file}`);
         } catch (error) {
-            console.warn(`[loadAudioFiles] Chyba při načítání: ${file}`, error.message);
+            console.warn(`[loadAudioFiles] ⚠️ Chyba při načítání: ${file}`, error.message);
+            audioBuffers[index] = null; // Zabráníme chybám při přehrávání
         }
     });
 
-    await Promise.allSettled(fetchPromises);
+    await Promise.allSettled(fetchPromises); // Počkáme na dokončení všech požadavků
 
-    isLoaded = audioBuffers.some(buffer => buffer);
+    // Kontrola, zda jsme něco skutečně načetli
+    isLoaded = audioBuffers.some(buffer => buffer !== null);
     isLoading = false;
     hideSpinner();
-    
-    if (!isLoaded) return Promise.reject('Žádné zvukové soubory nebyly načteny.');
 
-    logDebug('[loadAudioFiles] Audio soubory načteny.');
+    if (!isLoaded) {
+        console.error('[loadAudioFiles] ❌ Žádné zvukové soubory nebyly načteny.');
+        return Promise.reject('Žádné zvukové soubory nebyly načteny.');
+    }
+
+    console.log('[loadAudioFiles] ✅ Všechna audia jsou nyní v paměti!');
+    return audioBuffers;
 }
 
 function resetAudioData() {
@@ -367,23 +313,51 @@ function startAudio(startFrom = 0) {
     gainNodes = [];
     startTime = audioContext.currentTime - startFrom;
 
-    // Přehrávání všech bufferů
-    audioBuffers.forEach((buffer, index) => {
-        if (!buffer) return;
+    // Nejprve vytvoříme všechny zdroje a uložíme je do pole
+    const sources = audioBuffers.map((buffer, index) => {
+        if (!buffer) return null;
 
-        const gainNode = audioContext.createGain();
-        gainNode.gain.value = 0;
-        gainNode.connect(audioContext.destination);
+        const isFront = index % 2 === 0;  // Sudé indexy = přední signál, liché = zadní
+        const gainValue = isFront ? dBToGain(currentPattern.audio1) : dBToGain(currentPattern.audio2);
 
         const source = audioContext.createBufferSource();
         source.buffer = buffer;
-        source.loop = false;
-        source.connect(gainNode);
 
-        source.start(0, startFrom);
+        // 🎚 GainNode pro úpravu hlasitosti
+        const gainNode = audioContext.createGain();
+        gainNode.gain.value = currentPattern.polarity && !isFront ? -gainValue : gainValue;
+
+        source.connect(gainNode);
+        gainNode.connect(audioContext.destination);
+
         audioSources.push(source);
         gainNodes.push(gainNode);
+
+        return source;
+    }).filter(source => source !== null);  // Odstraníme `null` hodnoty (neplatné buffery)
+
+    // **PŘESNÉ SPUŠTĚNÍ VŠECH ZVUKŮ SOUČASNĚ**  
+    const startAt = audioContext.currentTime + 0.01; // Přidáme bezpečné zpoždění 100 ms  
+    console.log(`[startAudio] Plánovaný čas spuštění: ${startAt.toFixed(6)}s`);
+
+    // Pro debug: Měření časových rozdílů mezi spuštěním jednotlivých souborů
+    let prevStartTime = null;
+
+    sources.forEach((source, index) => {
+        source.start(startAt, startFrom);
+        
+        const realStartTime = audioContext.currentTime;
+        if (prevStartTime !== null) {
+            console.log(`🔹 Rozdíl mezi ${index - 1} a ${index}: ${(realStartTime - prevStartTime).toFixed(6)}s`);
+        }
+        prevStartTime = realStartTime;
+
+        console.log(`[DEBUG] Soubor ${index} spuštěn!`);
+        console.log(`  🔹 Čas v audioContext: ${realStartTime.toFixed(6)}s`);
+        console.log(`  🔹 Rozdíl oproti plánovanému času: ${(realStartTime - startAt).toFixed(6)}s`);
     });
+
+    console.log(`[startAudio] Všechny zvuky spuštěny přesně v čase ${startAt}`);
 
     setAudioLevels('distanceSlider'); // Aktualizuje hlasitosti podle slideru
 
@@ -397,6 +371,17 @@ function startAudio(startFrom = 0) {
         }
 
         const elapsedTime = audioContext.currentTime - startTime;
+
+            // Pokud je rozdíl mezi zvukem a kurzorem větší než 5ms, upravíme ho
+        const expectedWaveformPosition = elapsedTime / duration;
+        const actualWaveformPosition = currentInstance.getCurrentTime() / duration;
+        const drift = Math.abs(expectedWaveformPosition - actualWaveformPosition);
+
+        if (drift > 0.005) {  // 5 ms tolerance
+            currentInstance.seekTo(expectedWaveformPosition);
+            console.log(`[SYNC] Oprava driftu kurzoru: ${drift.toFixed(6)}s`);
+        }
+    
 
         // Kontrola, zda jsme na konci regionu nebo délky souboru
         if (loopRegion && elapsedTime >= loopRegion.end) {
@@ -426,7 +411,7 @@ function startAudio(startFrom = 0) {
         Object.values(waveSurferInstances).forEach(instance => {
             instance.seekTo(waveformRelativePosition);
         });
-    }, 0); // Aktualizace každých 50 ms
+    }, 5); // Aktualizace každých 5 ms
 }
 
 function stopAudioBuffers() {
@@ -808,12 +793,12 @@ function addEventListeners() {
         if (patternSelector.classList.contains('expanded')) {
             patternSelector.classList.remove('expanded');
             patternSelector.classList.add('collapsed');
-            micButtonImage.src = '/public/Images/microphone-icon.png'; // Obrázek pro zavřený stav
+            micButtonImage.src = '/images/microphone-icon.png'; // Obrázek pro zavřený stav
             logDebug('Bublina zavřena pomocí šipky');
         } else if (patternSelector.classList.contains('collapsed')) {
             patternSelector.classList.remove('collapsed');
             patternSelector.classList.add('expanded');
-            micButtonImage.src = '/public/Images/arrow-left-icon.png'; // Obrázek pro rozbalený stav
+            micButtonImage.src = '/images/arrow-left-icon.png'; // Obrázek pro rozbalený stav
             logDebug('Bublina otevřena pomocí šipky');
         }
 
@@ -830,12 +815,12 @@ function addEventListeners() {
         if (waveformSelector.classList.contains('expanded')) {
             waveformSelector.classList.remove('expanded');
             waveformSelector.classList.add('collapsed');
-            micButtonImage.src = '/public/Images/space-icon.png'; // Obrázek pro zavřený stav
+            micButtonImage.src = '/images/space-icon.png'; // Obrázek pro zavřený stav
             logDebug('Bublina zavřena pomocí šipky');
         } else if (waveformSelector.classList.contains('collapsed')) {
             waveformSelector.classList.remove('collapsed');
             waveformSelector.classList.add('expanded');
-            micButtonImage.src = '/public/Images/arrow-right-icon.png'; // Obrázek pro rozbalený stav
+            micButtonImage.src = '/images/arrow-right-icon.png'; // Obrázek pro rozbalený stav
             logDebug('Bublina otevřena pomocí šipky');
         }
 
@@ -860,28 +845,27 @@ function updateSliderThumbImage(patternName) {
     // Na základě vybrané směrové charakteristiky přiřadíme obrázek
     switch (patternName) {
         case 'omni':
-            thumbImageUrl = '/public/Images/Directivity_patterns/omni.png'; // Obrázek pro kouli
+            thumbImageUrl = '/images/Directivity_patterns/omni.png'; // Obrázek pro kouli
             break;
         case 'cardioid':
-            thumbImageUrl = '/public/Images/Directivity_patterns/cardio.png'; // Obrázek pro ledvinu
+            thumbImageUrl = '/images/Directivity_patterns/cardio.png'; // Obrázek pro ledvinu
             break;
         case 'wide_cardioid':
-            thumbImageUrl = '/public/Images/Directivity_patterns/wide_cardio.png'; // Obrázek pro širokou ledvinu
+            thumbImageUrl = '/images/Directivity_patterns/wide_cardio.png'; // Obrázek pro širokou ledvinu
             break;
         case 'super_cardioid':
-            thumbImageUrl = '/public/Images/Directivity_patterns/super_cardio.png'; // Obrázek pro superkardioidu
+            thumbImageUrl = '/images/Directivity_patterns/super_cardio.png'; // Obrázek pro superkardioidu
             break;
         case 'figure_8':
-            thumbImageUrl = '/public/Images/Directivity_patterns/figure_8.png'; // Obrázek pro osmičku
+            thumbImageUrl = '/images/Directivity_patterns/figure_8.png'; // Obrázek pro osmičku
             break;
         default:
-            thumbImageUrl = '/public/Images/Directivity_patterns/omni.png'; // Výchozí obrázek
+            thumbImageUrl = '/images/Directivity_patterns/omni.png'; // Výchozí obrázek
     }
 
     // Změníme obrázek na slideru
     document.querySelector('input[type="range"]').style.setProperty('--slider-thumb-image', `url(${thumbImageUrl})`);
 }
-
 
 // Funkce pro přichycení posuvníku
 function enableSnapping(sliderId, tolerance = 1) { // tolerance je nastavena na 0.2, můžete ji upravit podle potřeby
@@ -911,41 +895,41 @@ function enableSnapping(sliderId, tolerance = 1) { // tolerance je nastavena na 
 
 // Připojení výběru technik k nástrojům – výběr v menu (dropdown)
 async function updateTechniqueSelect() {
-    console.log('🎵 Spouštím updateTechniqueSelect...');
+    logDebug('Spouštím updateTechniqueSelect...');
 
     const selectedInstrument = document.getElementById('instrumentSelect').value;
     const techniqueSelect = document.getElementById('techniqueSelect');
 
     if (!selectedInstrument) {
-        console.error("❌ Nebyl vybrán žádný nástroj.");
-        return;
+        return Promise.reject('Není k dispozici nástroj.');
     }
 
     try {
-        const audioFiles = await fetchAudioFilesFromDrive(folderId, apiKey);
-        if (!audioFiles || Object.keys(audioFiles).length === 0) {
-            throw new Error("❌ Žádné soubory nebyly nalezeny.");
-        }
+        const spaces = await fetchSpaces();
+        logDebug('Načtené prostory:', spaces);
 
-        console.log('✅ 🔍 Načtené soubory:', audioFiles);
-
-        // **Získání unikátních technik z názvů souborů**
+        // Najdeme všechny unikátní techniky pro vybraný nástroj napříč prostory
         const uniqueTechniques = new Set();
-        Object.keys(audioFiles).forEach(fileName => {
-            const parts = fileName.split('-'); // Rozdělení názvu souboru podle "-"
-            if (parts.length >= 3) {
-                uniqueTechniques.add(parts[2]); // Předpoklad: 3. část názvu obsahuje techniku
+        spaces.forEach(space => {
+            const instrumentData = space.instruments.find(inst => inst.name === selectedInstrument);
+            if (instrumentData && Array.isArray(instrumentData.techniques)) {
+                instrumentData.techniques.forEach(technique => uniqueTechniques.add(technique));
             }
         });
 
         // Vymažeme staré možnosti
         techniqueSelect.innerHTML = '';
 
+        // Přidáme nové možnosti technik
         if (uniqueTechniques.size > 0) {
             uniqueTechniques.forEach(technique => {
                 const option = document.createElement('option');
                 option.value = technique;
-                option.textContent = technique.replace(/_/g, ' ').charAt(0).toUpperCase() + technique.slice(1);
+
+                // Odstranění podtržítek a změna prvního písmene na velké
+                const formattedTechnique = technique.replace(/_/g, ' ');
+                option.textContent = formattedTechnique.charAt(0).toUpperCase() + formattedTechnique.slice(1);
+
                 techniqueSelect.appendChild(option);
             });
         } else {
@@ -955,9 +939,11 @@ async function updateTechniqueSelect() {
             techniqueSelect.appendChild(option);
         }
 
-        console.log(`✅ 🎵 Techniky pro "${selectedInstrument}":`, Array.from(uniqueTechniques));
+        logDebug(`Techniky pro "${selectedInstrument}":`, Array.from(uniqueTechniques));
+        return Promise.resolve(); // Funkce skončila úspěšně
     } catch (error) {
-        console.error('❌ Chyba při aktualizaci výběru technik:', error);
+        console.error('Chyba při aktualizaci výběru technik:', error);
+        return Promise.reject(error);
     }
 }
 
@@ -1155,7 +1141,6 @@ function initializeRegionForCurrentInstance() {
     logDebug(`[initializeRegionForCurrentInstance] Region vytvořen od 0 do ${duration || 10}.`);
 }
 
-
 function initRegionListenersForCurrentInstance() {
     const currentInstance = waveSurferInstances[`waveform-${currentSpace}`];
     if (!currentInstance) {
@@ -1275,11 +1260,6 @@ function updateButtonState(buttonId, isActive, activeClass) {
     }
 }
 
-
-
-
-
-
 /**
  * Načte externí SVG a vloží ho do .svg-container
  * @param {string} svgUrl - Cesta k SVG
@@ -1315,7 +1295,6 @@ function loadSvgFile(svgUrl, callback) {
         console.error('Chyba:', error);
       });
   }
-
 
 function positionSlider() {
     const distanceSlider = document.getElementById('distanceSlider');
@@ -1385,9 +1364,6 @@ function positionSlider() {
     distanceSlider.value = minVal;
 }
 
-
-
-
 window.toggleMenu = function() {
     // 1) Vybereme hamburger ikonku
     const hamburger = document.querySelector(".hamburger");
@@ -1423,18 +1399,15 @@ document.getElementById("infoModal").addEventListener("click", function (event) 
     }
 });
 
-
 function logDebug(message, ...optionalParams) {
     if (DEBUG_MODE) {
         logDebug(message, ...optionalParams);
     }
 }
-
-
 function showSpinner() {
     document.getElementById('spinner').style.display = 'block';
   }
   
-  function hideSpinner() {
+function hideSpinner() {
     document.getElementById('spinner').style.display = 'none';
-  }
+}

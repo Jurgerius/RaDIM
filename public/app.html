@@ -4,25 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RaDIM - App</title>
-    <link rel="stylesheet" href="public/style_app.css">
+    <link rel="stylesheet" href="/style_app.css">
     <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet'>
-    <link rel="icon" href="public/Images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
 </head>
 
 <body>
 
     <header>
         <div class="logo-left">
-            <a href="index.html">
-                <img src="public/Images/logo_aplikace.png" alt="Logo" class="logo-image">  <!-- Levé logo -->
+            <a href="/index.html">
+                <img src="/images/logo_aplikace.png" alt="Logo" class="logo-image">  <!-- Levé logo -->
             </a>
             <span class="logo-text">RaDIM</span> <!-- Text vedle loga vlevo -->
         </div>
 
         <nav class="nav-container">
             <div class="nav-links">
-                <a href="about.html" data-i18n="nav.about">O PROJEKTU</a>
-                <a href="test.html" data-i18n="nav.test">TEST</a>
+                <a href="/about.html" data-i18n="nav.about">O PROJEKTU</a>
+                <a href="/test.html" data-i18n="nav.test">TEST</a>
 
                 <div class="language-buttons">
                     <button id="btn-cs">🇨🇿</button>
@@ -44,7 +44,7 @@
         <h1 data-i18n="app.title">Interaktivní aplikace</h1>  
         <div class="info-container">
             <button class="info-button" onclick="openModal()">
-                <img src="public/Images/info.png" alt="Info" class="info-icon">
+                <img src="/images/info.png" alt="Info" class="info-icon">
             </button>
             <!-- Tooltip v HTML -->
             <div class="tooltip-text" id="tooltipText" data-i18n="app.tooltip">Jak s aplikací pracovat</div>
@@ -84,7 +84,7 @@
             <ul class="modal-text">
                 <li>
                   <p>
-                    <img src="public/Images/Directivity_patterns/omni.png" alt="Koule">
+                    <img src="/images/Directivity_patterns/omni.png" alt="Koule">
                     <span data-i18n="app.modal.directivity_list.omni">
                       <strong>koule:</strong> přední kapsle = 0dB, zadní kapsle = 0dB
                     </span>
@@ -92,7 +92,7 @@
                 </li>
                 <li>
                   <p>
-                    <img src="public/Images/Directivity_patterns/wide_cardio.png" alt="Široká ledvina">
+                    <img src="/images/Directivity_patterns/wide_cardio.png" alt="Široká ledvina">
                     <span data-i18n="app.modal.directivity_list.wide_cardio">
                       <strong>široká ledvina:</strong> přední kapsle = 0dB, zadní kapsle = -10dB
                     </span>
@@ -100,7 +100,7 @@
                 </li>
                 <li>
                   <p>
-                    <img src="public/Images/Directivity_patterns/cardio.png" alt="Ledvina">
+                    <img src="/images/Directivity_patterns/cardio.png" alt="Ledvina">
                     <span data-i18n="app.modal.directivity_list.cardio">
                       <strong>ledvina:</strong> přední kapsle = 0dB, zadní kapsle = -∞dB
                     </span>
@@ -108,7 +108,7 @@
                 </li>
                 <li>
                   <p>
-                    <img src="public/Images/Directivity_patterns/super_cardio.png" alt="Superkardioida">
+                    <img src="/images/Directivity_patterns/super_cardio.png" alt="Superkardioida">
                     <span data-i18n="app.modal.directivity_list.super_cardio">
                       <strong>superkardioida:</strong> přední kapsle = 0dB, zadní kapsle = -10dB + Ø
                     </span>
@@ -116,7 +116,7 @@
                 </li>
                 <li>
                   <p>
-                    <img src="public/Images/Directivity_patterns/figure_8.png" alt="Osmička">
+                    <img src="/images/Directivity_patterns/figure_8.png" alt="Osmička">
                     <span data-i18n="app.modal.directivity_list.figure_8">
                       <strong>osmička:</strong> přední kapsle = 0dB, zadní kapsle = 0dB + Ø
                     </span>
@@ -124,32 +124,32 @@
                 </li>
               </ul>
             <p class="modal-text" data-i18n="app.modal.mic_selection">
-                Výběr směrové charakteristiky lze provést kliknutím na ikonu mikrofonu <img src="public/Images/microphone-icon.png"/> umístěnou napravo od přehrávací části.
+                Výběr směrové charakteristiky lze provést kliknutím na ikonu mikrofonu <img src="/images/microphone-icon.png"/> umístěnou napravo od přehrávací části.
             </p>
             <p class="modal-text" data-i18n="app.modal.acoustic_intro">
-                Akustické prostředí lze měnit prostřednictvím ikony prostoru <img src="public/Images/space-icon.png"/> umístěné nalevo od přehrávací sekce. K dispozici jsou čtyři typy prostorů:
+                Akustické prostředí lze měnit prostřednictvím ikony prostoru <img src="/images/space-icon.png"/> umístěné nalevo od přehrávací sekce. K dispozici jsou čtyři typy prostorů:
             </p>
             <ul class="modal-text">
                 <li>
-                  <img src="public/Images/studio-icon.png" alt="Studio">
+                  <img src="/images/studio-icon.png" alt="Studio">
                   <span data-i18n="app.modal.acoustic_list.studio">
                     <strong>studio</strong>
                   </span>
                 </li>
                 <li>
-                  <img src="public/Images/concert_hall-icon.png" alt="Concert Hall">
+                  <img src="/images/concert_hall-icon.png" alt="Concert Hall">
                   <span data-i18n="app.modal.acoustic_list.concert_hall">
                     <strong>koncertní sál</strong>
                   </span>
                 </li>
                 <li>
-                  <img src="public/Images/anechoic_chamber-icon.png" alt="Anechoic Chamber">
+                  <img src="/images/anechoic_chamber-icon.png" alt="Anechoic Chamber">
                   <span data-i18n="app.modal.acoustic_list.anechoic_chamber">
                     <strong>mrtvá komora</strong>
                   </span>
                 </li>
                 <li>
-                  <img src="public/Images/church-icon.png" alt="Church">
+                  <img src="/images/church-icon.png" alt="Church">
                   <span data-i18n="app.modal.acoustic_list.church">
                     <strong>kostel</strong>
                   </span>
@@ -160,19 +160,19 @@
                   Přehrávání zvukových ukázek je možné ovládat pomocí ikon
                 </span>
                     <strong>play</strong>
-                <img src="public/Images/play-icon.png" alt="Play">
+                <img src="/images/play-icon.png" alt="Play">
                 <span>
                     <strong>stop</strong>
                 </span>
-                <img src="public/Images/stop-icon.png" alt="Stop">
+                <img src="/images/stop-icon.png" alt="Stop">
                 <span>
                     <strong>pause</strong>
                 </span>
-                <img src="public/Images/pause-icon.png" alt="Pause">
+                <img src="/images/pause-icon.png" alt="Pause">
                 <span>
                     <strong>loop</strong>
                 </span>
-                <img src="public/Images/loop-icon.png" alt="Loop">
+                <img src="/images/loop-icon.png" alt="Loop">
                 <span data-i18n="app.modal.playback.part2">
                     Funkce smyčky umožňuje vymezení úseku, jehož délku lze upravit tažením hranic. Smyčku lze deaktivovat opětovným kliknutím.
                 </span>
@@ -233,13 +233,13 @@
             <div id="bottom-left-container">
                 <div id="space-selector" class="collapsed">
                     <div class="space-options" id="spaceSelect">
-                        <img src="public/Images/studio-icon.png" alt="Studio" data-value="studio">
-                        <img src="public/Images/concert_hall-icon.png" alt="Concert Hall" data-value="concert_hall">
-                        <img src="public/Images/anechoic_chamber-icon.png" alt="Anechoic Chamber" data-value="anechoic_chamber">
-                        <img src="public/Images/church-icon.png" alt="Church" data-value="church">
+                        <img src="/images/studio-icon.png" alt="Studio" data-value="studio">
+                        <img src="/images/concert_hall-icon.png" alt="Concert Hall" data-value="concert_hall">
+                        <img src="/images/anechoic_chamber-icon.png" alt="Anechoic Chamber" data-value="anechoic_chamber">
+                        <img src="/images/church-icon.png" alt="Church" data-value="church">
                     </div>
                     <button id="collapseButtonLeft" class="collapse-space">
-                        <img src="public/Images/space-icon.png" alt="Collapse/Expand"/>
+                        <img src="/images/space-icon.png" alt="Collapse/Expand"/>
                     </button>
                 </div>
             </div>
@@ -248,16 +248,16 @@
             <div id="controls-container">
                 <div id="controls">
                     <button id="play">
-                        <img src="public/Images/play-icon.png" alt="Play">
+                        <img src="/images/play-icon.png" alt="Play">
                     </button>
                     <button id="stop">
-                        <img src="public/Images/stop-icon.png" alt="Stop">
+                        <img src="/images/stop-icon.png" alt="Stop">
                     </button>
                     <button id="pause">
-                        <img src="public/Images/pause-icon.png" alt="Pause">
+                        <img src="/images/pause-icon.png" alt="Pause">
                     </button>
                     <button id="toggleLoop" class="loop-inactive">
-                        <img src="public/Images/loop-icon.png" alt="Loop">
+                        <img src="/images/loop-icon.png" alt="Loop">
                     </button>
                 </div>
             </div>
@@ -266,21 +266,21 @@
             <div id="bottom-right-container">
                 <div id="pattern-selector" class="collapsed">
                     <button id="collapseButtonRight" class="collapse-mic">
-                        <img src="public/Images/microphone-icon.png" alt="Collapse/Expand"/>
+                        <img src="/images/microphone-icon.png" alt="Collapse/Expand"/>
                     </button>
                     <div class="pattern-options" id="patternSelect">
-                        <img src="public/Images/Directivity_patterns/omni.png" alt="Koule" data-value="omni">
-                        <img src="public/Images/Directivity_patterns/wide_cardio.png" alt="Široká ledvina" data-value="wide_cardioid">
-                        <img src="public/Images/Directivity_patterns/cardio.png" alt="Ledvina" data-value="cardioid">
-                        <img src="public/Images/Directivity_patterns/super_cardio.png" alt="Superkardioida" data-value="super_cardioid">
-                        <img src="public/Images/Directivity_patterns/figure_8.png" alt="Osmička" data-value="figure_8">
+                        <img src="/images/Directivity_patterns/omni.png" alt="Koule" data-value="omni">
+                        <img src="/images/Directivity_patterns/wide_cardio.png" alt="Široká ledvina" data-value="wide_cardioid">
+                        <img src="/images/Directivity_patterns/cardio.png" alt="Ledvina" data-value="cardioid">
+                        <img src="/images/Directivity_patterns/super_cardio.png" alt="Superkardioida" data-value="super_cardioid">
+                        <img src="/images/Directivity_patterns/figure_8.png" alt="Osmička" data-value="figure_8">
                     </div>
                 </div>
             </div>
         </div>
     </div>
     
-    <a data-i18n="back_to_home" href="index.html" class="cta-btn">Zpět na hlavní stránku</a>
+    <a data-i18n="back_to_home" href="/index.html" class="cta-btn">Zpět na hlavní stránku</a>
 
     <footer>
         <p data-i18n="footer">2025 Studijní aplikace RaDIM</p>
@@ -293,8 +293,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next/23.7.3/i18next.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next-http-backend/2.2.0/i18nextHttpBackend.min.js"></script>
 
-    <script type="module" src="src/script_app.js"></script>
-    <script type="module" src="src/main.js"></script>
+    <script type="module" src="/scripts/script_app.js"></script>
+    <script type="module" src="/scripts/main.js"></script>
 
 </body>
 </html>
