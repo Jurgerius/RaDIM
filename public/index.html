@@ -58,6 +58,7 @@
         <!-- Feedback container -->
         <button id="feedback-button" data-i18n="index.feedback.button">Feedback</button>
         <div id="feedback-container" class="feedback-container">
+        <button id="feedback-close" class="feedback-close">&times;</button>
         <form id="feedback-form" class="feedback-form" action="/submit_feedback" method="POST">
             <div class="feedback-header">
             <h2 data-i18n="index.feedback.title">Zpětná vazba</h2>
@@ -303,15 +304,21 @@
             document.getElementById("feedback-container").classList.toggle("active");
         });
 
-        document.addEventListener("click", function(event) {
-            const feedbackContainer = document.getElementById("feedback-container");
-            const feedbackButton = document.getElementById("feedback-button");
-            
-            // Pokud je okno aktivní a kliknutí nastalo mimo feedback container a tlačítko
-            if (feedbackContainer.classList.contains("active") &&
-                !feedbackContainer.contains(event.target) &&
-                !feedbackButton.contains(event.target)) {
-                feedbackContainer.classList.remove("active");
+        // Funkce pro zavření feedback okna
+        function closeFeedback() {
+            document.getElementById("feedback-container").classList.remove("active");
+        }
+
+        // Zavře feedback okno při kliknutí na křížek
+        document.getElementById("feedback-close").addEventListener("click", function() {
+            closeFeedback();
+        });
+
+        // Zavře feedback okno při kliknutí mimo formulář
+        document.getElementById("feedback-container").addEventListener("click", function(event) {
+            const feedbackForm = document.getElementById("feedback-form");
+            if (!feedbackForm.contains(event.target) && event.target.id !== "feedback-close") {
+                closeFeedback();
             }
         });
 
