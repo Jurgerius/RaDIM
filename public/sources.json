@@ -9,7 +9,7 @@
                 },
                 {
                     "name": "violin",
-                    "techniques": ["detache", "legato", "staccato", "andante", "vivace"]
+                    "techniques": ["detache", "legato", "staccato", "pizzicato", "andante", "vivace"]
                 },
                 {
                     "name": "clarinet",
@@ -38,7 +38,7 @@
                 },
                 {
                     "name": "violin",
-                    "techniques": ["detache", "legato", "staccato", "andante", "vivace"]
+                    "techniques": ["detache", "legato", "staccato", "pizzicato", "andante", "vivace"]
                 },
                 {
                     "name": "clarinet",
@@ -67,7 +67,7 @@
                 },
                 {
                     "name": "violin",
-                    "techniques": ["detache", "legato", "staccato", "andante", "vivace"]
+                    "techniques": ["detache", "legato", "staccato", "pizzicato", "andante", "vivace"]
                 },
                 {
                     "name": "clarinet",
@@ -96,7 +96,7 @@
                 },
                 {
                     "name": "violin",
-                    "techniques": ["detache", "legato", "staccato", "andante", "vivace"]
+                    "techniques": ["detache", "legato", "staccato", "pizzicato", "andante", "vivace"]
                 },
                 {
                     "name": "clarinet",
