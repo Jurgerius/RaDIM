@@ -339,26 +339,28 @@ function startAudio(startFrom = 0) {
     setAudioLevels('distanceSlider'); // Aktualizuje hlasitosti podle slideru
 
     // **PŘESNÉ SPUŠTĚNÍ VŠECH ZVUKŮ SOUČASNĚ**  
-    const startAt = audioContext.currentTime + 0.01; // Přidáme bezpečné zpoždění 100 ms  
+    const startAt = audioContext.currentTime + 0.01; // Přidáme bezpečné zpoždění 10 ms  
     console.log(`[startAudio] Plánovaný čas spuštění: ${startAt.toFixed(6)}s`);
 
     // Pro debug: Měření časových rozdílů mezi spuštěním jednotlivých souborů
     let prevStartTime = null;
+    
+    setTimeout(() => {
+        sources.forEach((source, index) => {
+            source.start(startAt, startFrom);
+            
+            const realStartTime = audioContext.currentTime;
+            if (prevStartTime !== null) {
+                console.log(`🔹 Rozdíl mezi ${index - 1} a ${index}: ${(realStartTime - prevStartTime).toFixed(6)}s`);
+            }
+            prevStartTime = realStartTime;
 
-    sources.forEach((source, index) => {
-        source.start(startAt, startFrom);
-        
-        const realStartTime = audioContext.currentTime;
-        if (prevStartTime !== null) {
-            console.log(`🔹 Rozdíl mezi ${index - 1} a ${index}: ${(realStartTime - prevStartTime).toFixed(6)}s`);
-        }
-        prevStartTime = realStartTime;
-
-        console.log(`[DEBUG] Soubor ${index} spuštěn!`);
-        console.log(`  🔹 Čas v audioContext: ${realStartTime.toFixed(6)}s`);
-        console.log(`  🔹 Rozdíl oproti plánovanému času: ${(realStartTime - startAt).toFixed(6)}s`);
-    });
-
+            console.log(`[DEBUG] Soubor ${index} spuštěn!`);
+            console.log(`  🔹 Čas v audioContext: ${realStartTime.toFixed(6)}s`);
+            console.log(`  🔹 Rozdíl oproti plánovanému času: ${(realStartTime - startAt).toFixed(6)}s`);
+        });
+    }, 10);  // 10 ms zpoždění na jistotu, že gainy jsou nastavené
+    
     console.log(`[startAudio] Všechny zvuky spuštěny přesně v čase ${startAt}`);
 
     isPlaying = true;
