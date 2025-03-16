@@ -303,6 +303,18 @@
             document.getElementById("feedback-container").classList.toggle("active");
         });
 
+        document.addEventListener("click", function(event) {
+            const feedbackContainer = document.getElementById("feedback-container");
+            const feedbackButton = document.getElementById("feedback-button");
+            
+            // Pokud je okno aktivní a kliknutí nastalo mimo feedback container a tlačítko
+            if (feedbackContainer.classList.contains("active") &&
+                !feedbackContainer.contains(event.target) &&
+                event.target !== feedbackButton) {
+                feedbackContainer.classList.remove("active");
+            }
+        });
+
         document.addEventListener("DOMContentLoaded", function () {
             const feedbackForm = document.querySelector('.feedback-form');
 
