@@ -259,6 +259,9 @@ async function loadAudioFiles() {
     }
 
     logDebug('[loadAudioFiles] ✅ Všechna audia jsou nyní v paměti!');
+
+    logAudioFileDetails();
+
     return audioBuffers;
 }
 
