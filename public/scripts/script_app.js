@@ -336,6 +336,8 @@ function startAudio(startFrom = 0) {
         return source;
     }).filter(source => source !== null);  // Odstraníme `null` hodnoty (neplatné buffery)
 
+    setAudioLevels('distanceSlider'); // Aktualizuje hlasitosti podle slideru
+
     // **PŘESNÉ SPUŠTĚNÍ VŠECH ZVUKŮ SOUČASNĚ**  
     const startAt = audioContext.currentTime + 0.01; // Přidáme bezpečné zpoždění 100 ms  
     console.log(`[startAudio] Plánovaný čas spuštění: ${startAt.toFixed(6)}s`);
@@ -358,8 +360,6 @@ function startAudio(startFrom = 0) {
     });
 
     console.log(`[startAudio] Všechny zvuky spuštěny přesně v čase ${startAt}`);
-
-    setAudioLevels('distanceSlider'); // Aktualizuje hlasitosti podle slideru
 
     isPlaying = true;
 
