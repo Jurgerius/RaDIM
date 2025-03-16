@@ -11,7 +11,7 @@
     "feedback": {
       "button": "Feedback",
       "title": "Feedback",
-      "description": "Vielen Dank für Ihr Feedback. Es hilft uns, die Applikation zu verbessern. Bewertung: 1 am besten, 5 am schlechtesten",
+      "description": "Vielen Dank für Ihr Feedback. Es hilft uns, die Applikation zu verbessern.",
       "label_environment": "Wie wirkt sich die Umgebung der Applikation auf Sie aus?",
       "placeholder_environment": "Erster Eindruck, Flüssigkeit, Design...",
       "label_intuitive": "Ist die Bedienung der Applikation intuitiv?",

@@ -537,44 +537,6 @@ button#feedback-button:hover {
     gap: 5px; /* Mezera mezi řádky */
 }
 
-.rating-options {
-    display: flex;
-    justify-content: center;
-    gap: 15px; /* Mezera mezi kuličkami */
-}
-
-.rating-options input {
-    display: none;
-}
-
-.rating-options label {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 45px; /* Větší kuličky */
-    height: 45px;
-    border-radius: 50%;
-    border: 3px solid #007bff;
-    cursor: pointer;
-    font-size: 18px;
-    font-weight: bold;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    line-height: 45px; /* Zarovnání čísla vertikálně doprostřed */
-}
-
-.rating-options input:checked + label {
-    background-color: #007bff;
-    color: white;
-}
-
-.rating-labels {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    font-size: 14px;
-    font-weight: bold;
-} 
-
 /* Kontejner pro hvězdičky */
 .rating {
     direction: rtl; /* Otočí pořadí hvězdiček zprava doleva */

@@ -13,7 +13,7 @@
     "feedback": {
       "button": "Feedback",
       "title": "Feedback",
-      "description": "Thank you for your feedback. It helps me improve the application. Rating: 1 best, 5 worst",
+      "description": "Thank you for your feedback. It helps me improve the application.",
       "label_environment": "How does the application environment affect you?",
       "placeholder_environment": "First impression, fluidity, design...",
       "label_intuitive": "Is the application control intuitive?",

@@ -13,7 +13,7 @@
     "feedback": {
       "button": "Feedback",
       "title": "Zpětná vazba",
-      "description": "Díky za Vaši zpětnou vazbu. Díky ní dokážu aplikaci vylepšit. Hodnocení: 1 nejlepší, 5 nejhorší",
+      "description": "Díky za Vaši zpětnou vazbu. Díky ní dokážu aplikaci vylepšit.",
       "label_environment": "Jak na Vás působí prostředí aplikace?",
       "placeholder_environment": "První dojem, plynulost, design...",
       "label_intuitive": "Je ovládání aplikace intuitivní?",
