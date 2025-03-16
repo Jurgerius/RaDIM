@@ -318,21 +318,7 @@ function startAudio(startFrom = 0) {
         if (!buffer) return null;
 
         const isFront = index % 2 === 0;  // Sudé indexy = přední signál, liché = zadní
-        const spaceIndex = Math.floor(index / 8);  // Každý prostor má 8 souborů
-        const pairIndex = Math.floor(index / 2);   // Každý pár tvoří 2 soubory (front/back)
-        const audioType = isFront ? 'audio1' : 'audio2';  // Určení typu audia
-        // const gainValue = isFront ? dBToGain(currentPattern.audio1) : dBToGain(currentPattern.audio2);
-        
-        // **Podmínky pro výběr správných souborů**
-        if (spaceIndex !== spaceMapping[currentSpace]) return null;
-        if (!(audioType in currentPattern)) return null;
-
-        const baseGain = currentPattern[audioType];
-        let gainValue = dBToGain(baseGain);
-        if (!isFront && currentPattern.polarity) {
-            gainValue = -gainValue;
-        }
-
+        const gainValue = isFront ? dBToGain(currentPattern.audio1) : dBToGain(currentPattern.audio2);
 
         const source = audioContext.createBufferSource();
         source.buffer = buffer;
