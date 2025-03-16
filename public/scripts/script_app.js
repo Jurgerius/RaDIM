@@ -312,7 +312,7 @@ function startAudio(startFrom = 0) {
     audioSources = [];
     gainNodes = [];
     startTime = audioContext.currentTime - startFrom;
-
+/* 
     // Nejprve vytvoříme všechny zdroje a uložíme je do pole
     const sources = audioBuffers.map((buffer, index) => {
         if (!buffer) return null;
@@ -335,6 +335,43 @@ function startAudio(startFrom = 0) {
 
         return source;
     }).filter(source => source !== null);  // Odstraníme `null` hodnoty (neplatné buffery)
+ */
+
+    // **Zajistí přehrání pouze relevantních audií!**
+    const sources = audioBuffers.map((buffer, index) => {
+        if (!buffer) return null;
+
+        const isFront = index % 2 === 0;
+        const pairIndex = Math.floor(index / 2);
+        const spaceIndex = Math.floor(index / 8);
+        const audioType = isFront ? 'audio1' : 'audio2';
+
+        // ✅ Filtrujeme pouze soubory pro aktuální prostor
+        if (spaceIndex !== spaceMapping[currentSpace]) return null;
+
+        // ✅ Filtrujeme pouze aktivní směrovou charakteristiku
+        if (!(audioType in currentPattern)) return null;
+
+        const baseGain = currentPattern[audioType];
+        let gainValue = dBToGain(baseGain);
+        if (!isFront && currentPattern.polarity) {
+            gainValue = -gainValue;
+        }
+
+        const source = audioContext.createBufferSource();
+        source.buffer = buffer;
+
+        const gainNode = audioContext.createGain();
+        gainNode.gain.value = gainValue;
+
+        source.connect(gainNode);
+        gainNode.connect(audioContext.destination);
+
+        audioSources.push(source);
+        gainNodes.push(gainNode);
+
+        return source;
+    }).filter(source => source !== null);  // 🔥 Odstraníme neplatné položky
 
     // **PŘESNÉ SPUŠTĚNÍ VŠECH ZVUKŮ SOUČASNĚ**  
     const startAt = audioContext.currentTime + 0.01; // Přidáme bezpečné zpoždění 100 ms  
