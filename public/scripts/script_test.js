@@ -76,8 +76,8 @@ function generateTestFilePaths(condition) {
   const distance = Number(condition.distance);
   // V testu potřebujeme pouze jednu dvojici souborů (front a back) pro zadanou vzdálenost
   const filePaths = [
-    `${basePath}${condition.space}-${condition.instrument}-${condition.technique}-${distance}front.wav`,
-    `${basePath}${condition.space}-${condition.instrument}-${condition.technique}-${distance}back.wav`
+    `${basePath}${condition.space}-${condition.instrument}-${condition.technique}-${distance}front.flac`,
+    `${basePath}${condition.space}-${condition.instrument}-${condition.technique}-${distance}back.flac`
   ];
   return filePaths;
 }
