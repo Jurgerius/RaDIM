@@ -310,7 +310,7 @@
             // Pokud je okno aktivní a kliknutí nastalo mimo feedback container a tlačítko
             if (feedbackContainer.classList.contains("active") &&
                 !feedbackContainer.contains(event.target) &&
-                event.target !== feedbackButton) {
+                !feedbackButton.contains(event.target)) {
                 feedbackContainer.classList.remove("active");
             }
         });
