@@ -208,7 +208,7 @@ function selectSpace(selectedSpace) {
 ====================================== */
 
 async function loadAudioFiles() {
-    console.log('[loadAudioFiles] Načítám audio soubory...');
+    logDebug('[loadAudioFiles] Načítám audio soubory...');
 
     // Pokud už probíhá načítání nebo jsou soubory načtené, vrátíme se
     if (isLoading || isLoaded) return Promise.resolve();
@@ -225,12 +225,12 @@ async function loadAudioFiles() {
         return Promise.reject('Žádné soubory.');
     }
 
-    console.log(`[loadAudioFiles] Počet souborů k načtení: ${audioPairs.length}`);
+    logDebug(`[loadAudioFiles] Počet souborů k načtení: ${audioPairs.length}`);
 
     // **Stáhneme a dekódujeme všechna audia PŘEDEM**
     const fetchPromises = audioPairs.map(async (file, index) => {
         try {
-            console.log(`[loadAudioFiles] 🔄 Stahuji soubor: ${file}`);
+            logDebug(`[loadAudioFiles] 🔄 Stahuji soubor: ${file}`);
 
             const response = await fetch(file);
             if (!response.ok) throw new Error(`Soubor nenalezen: ${file}`);
@@ -239,7 +239,7 @@ async function loadAudioFiles() {
             const decodedData = await audioContext.decodeAudioData(arrayBuffer);
 
             audioBuffers[index] = decodedData; // Uložíme do pole bufferů
-            console.log(`[loadAudioFiles] ✅ Načteno: ${file}`);
+            logDebug(`[loadAudioFiles] ✅ Načteno: ${file}`);
         } catch (error) {
             console.warn(`[loadAudioFiles] ⚠️ Chyba při načítání: ${file}`, error.message);
             audioBuffers[index] = null; // Zabráníme chybám při přehrávání
@@ -258,7 +258,7 @@ async function loadAudioFiles() {
         return Promise.reject('Žádné zvukové soubory nebyly načteny.');
     }
 
-    console.log('[loadAudioFiles] ✅ Všechna audia jsou nyní v paměti!');
+    logDebug('[loadAudioFiles] ✅ Všechna audia jsou nyní v paměti!');
     return audioBuffers;
 }
 
@@ -340,7 +340,7 @@ function startAudio(startFrom = 0) {
 
     // **PŘESNÉ SPUŠTĚNÍ VŠECH ZVUKŮ SOUČASNĚ**  
     const startAt = audioContext.currentTime + 0.01; // Přidáme bezpečné zpoždění 10 ms  
-    console.log(`[startAudio] Plánovaný čas spuštění: ${startAt.toFixed(6)}s`);
+    logDebug(`[startAudio] Plánovaný čas spuštění: ${startAt.toFixed(6)}s`);
 
     // Pro debug: Měření časových rozdílů mezi spuštěním jednotlivých souborů
     let prevStartTime = null;
@@ -351,17 +351,17 @@ function startAudio(startFrom = 0) {
             
             const realStartTime = audioContext.currentTime;
             if (prevStartTime !== null) {
-                console.log(`🔹 Rozdíl mezi ${index - 1} a ${index}: ${(realStartTime - prevStartTime).toFixed(6)}s`);
+                logDebug(`🔹 Rozdíl mezi ${index - 1} a ${index}: ${(realStartTime - prevStartTime).toFixed(6)}s`);
             }
             prevStartTime = realStartTime;
 
-            console.log(`[DEBUG] Soubor ${index} spuštěn!`);
-            console.log(`  🔹 Čas v audioContext: ${realStartTime.toFixed(6)}s`);
-            console.log(`  🔹 Rozdíl oproti plánovanému času: ${(realStartTime - startAt).toFixed(6)}s`);
+            logDebug(`[DEBUG] Soubor ${index} spuštěn!`);
+            logDebug(`  🔹 Čas v audioContext: ${realStartTime.toFixed(6)}s`);
+            logDebug(`  🔹 Rozdíl oproti plánovanému času: ${(realStartTime - startAt).toFixed(6)}s`);
         });
     }, 10);  // 10 ms zpoždění na jistotu, že gainy jsou nastavené
     
-    console.log(`[startAudio] Všechny zvuky spuštěny přesně v čase ${startAt}`);
+    logDebug(`[startAudio] Všechny zvuky spuštěny přesně v čase ${startAt}`);
 
     isPlaying = true;
 
@@ -381,7 +381,7 @@ function startAudio(startFrom = 0) {
 
         if (drift > 0.005) {  // 5 ms tolerance
             currentInstance.seekTo(expectedWaveformPosition);
-            console.log(`[SYNC] Oprava driftu kurzoru: ${drift.toFixed(6)}s`);
+            logDebug(`[SYNC] Oprava driftu kurzoru: ${drift.toFixed(6)}s`);
         }
     
 
@@ -1224,7 +1224,7 @@ function initRegionListenersForCurrentInstance() {
 
 // Funkce k logování detailů o audiosouborech
 function logAudioFileDetails() {
-    logDebug('=== Audio File Details ===');
+    console.log('=== Audio File Details ===');
 
     if (!audioBuffers || audioBuffers.length === 0) {
         console.error('Žádné audio soubory nejsou načteny.');
@@ -1243,14 +1243,14 @@ function logAudioFileDetails() {
         const durationInSeconds = (numSamples / sampleRate).toFixed(2); // Přesná délka v sekundách
 
         console.group(`File: ${filePath}`);
-        logDebug(`Index: ${index}`);
-        logDebug(`Sample Rate: ${sampleRate} [Hz]`);
-        logDebug(`Number of Samples: ${numSamples} [smpl]`);
-        logDebug(`Duration: ${durationInSeconds} [s]`);
+        console.log(`Index: ${index}`);
+        console.log(`Sample Rate: ${sampleRate} [Hz]`);
+        console.log(`Number of Samples: ${numSamples} [smpl]`);
+        console.log(`Duration: ${durationInSeconds} [s]`);
         console.groupEnd();
     });
 
-    logDebug('=== End of Audio File Details ===');
+    console.log('=== End of Audio File Details ===');
 }
 
 function updateButtonState(buttonId, isActive, activeClass) {
