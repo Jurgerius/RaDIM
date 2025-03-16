@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Analytics } from "@vercel/analytics/react"
 
 export default function App() {
   useEffect(() => {
@@ -26,5 +27,10 @@ export default function App() {
     }, 1000);
   }, []);
 
-  return <p>Přesměrování...</p>;
+  return (
+    <>
+      <p>Přesměrování...</p>
+      <Analytics /> {/* 🔹 Přidáno zpět do JSX */}
+    </>
+  );
 }
